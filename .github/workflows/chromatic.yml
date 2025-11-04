@@ -94,7 +94,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run E2E tests (functional only)
-        run: playwright test e2e/storybook/ -c playwright.config.ts --ignore-snapshots
+        run: npx playwright test e2e/storybook/ -c playwright.config.ts --ignore-snapshots
 
       - name: Build project
         run: npm run build
