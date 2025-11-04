@@ -7,3 +7,9 @@ export type { InputProps } from './Input/Input';
 
 export { Icon } from './Icon/Icon';
 export type { IconProps, IconName } from './Icon/Icon';
+
+export { CalendarDay } from './CalendarDay/CalendarDay';
+export type { CalendarDayProps } from './CalendarDay/CalendarDay';
+
+export { Tooltip } from './Tooltip/Tooltip';
+export type { TooltipProps } from './Tooltip/Tooltip';
