@@ -11,8 +11,7 @@ Este proyecto incluye las siguientes tecnologías:
 - **Vite 4.3.9** - Herramienta de construcción rápida
 - **TailwindCSS 3.4.3** - Framework de CSS utilitario
 - **Storybook 7** - Herramienta para desarrollo de componentes
-- **Jest 29.5.0** - Framework de pruebas
-- **React Testing Library 14.0.0** - Utilidades de pruebas para React
+- **Playwright 1.56.1** - Framework moderno de testing E2E y Component Testing
 - **ESLint** - Linter para JavaScript/TypeScript
 - **Prettier** - Formateador de código
 - **Chromatic** - Despliegue automatizado de Storybook
@@ -69,9 +68,13 @@ npm run preview      # Vista previa de la build de producción
 ### Testing
 
 ```bash
-npm test             # Ejecuta las pruebas
-npm run test:watch   # Ejecuta las pruebas en modo watch
-npm run test:coverage # Ejecuta las pruebas con reporte de cobertura
+npm test             # Ejecuta todos los tests con Playwright
+npm run test:ct      # Ejecuta Component Tests (tests unitarios)
+npm run test:e2e     # Ejecuta tests E2E de Storybook
+npm run test:ui      # Abre interfaz interactiva de Playwright
+npm run test:debug   # Ejecuta tests en modo debug
+npm run test:report  # Muestra el reporte de tests
+npm run test:install # Instala navegadores de Playwright
 ```
 
 ### Code Quality
@@ -133,12 +136,29 @@ Los archivos generados estarán en el directorio `dist/`.
 
 ## 🧪 Testing
 
-El proyecto incluye configuración completa para testing con Jest y React Testing Library:
+El proyecto utiliza Playwright para testing moderno con dos tipos de tests:
 
-- Tests unitarios para componentes
-- Configuración de mocks para assets
-- Setup file para Testing Library
-- Scripts para coverage
+### Component Testing (CT)
+- Tests unitarios de componentes en navegadores reales
+- Reemplaza a Jest/RTL con mejor rendimiento visual
+- Archivos: `*.spec.tsx` junto a cada componente
+- Configuración: `playwright-ct.config.ts`
+
+### E2E Testing
+- Tests end-to-end de Storybook
+- Validación de historias y comportamiento
+- Regresión visual automática
+- Tests de accesibilidad con Axe
+- Archivos: `e2e/storybook/*.spec.ts`
+- Configuración: `playwright.config.ts`
+
+### Ventajas de Playwright
+- ✅ Tests en navegadores reales (Chrome, Firefox, Safari)
+- ✅ Visual regression testing incluido
+- ✅ Mejor debugging con UI mode y traces
+- ✅ Tests de accesibilidad integrados
+- ✅ Soporte nativo para múltiples navegadores
+- ✅ Más rápido que configuraciones tradicionales
 
 ## 🎨 Storybook
 
@@ -196,8 +216,9 @@ Configurado con:
 - [Vite Guide](https://vitejs.dev/guide/)
 - [TailwindCSS Documentation](https://tailwindcss.com/docs)
 - [Storybook Documentation](https://storybook.js.org/docs)
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Playwright Documentation](https://playwright.dev)
+- [Playwright Component Testing](https://playwright.dev/docs/test-components)
+- [Axe Accessibility Testing](https://www.deque.com/axe/)
 - [ESLint Documentation](https://eslint.org/docs/user-guide/getting-started)
 - [Prettier Documentation](https://prettier.io/docs/en/index.html)
 

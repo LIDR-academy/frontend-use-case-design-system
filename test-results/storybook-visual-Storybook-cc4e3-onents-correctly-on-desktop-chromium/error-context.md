@@ -1,0 +1,8 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - img [ref=e4]
+  - generic [ref=e6]: Tag
+  - img [ref=e7]
+```

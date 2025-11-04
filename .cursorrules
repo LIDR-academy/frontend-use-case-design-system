@@ -1,7 +1,7 @@
 # Civitatis Design System - Cursor Rules
 
 ## 🎯 Project Overview
-This is a React 18 TypeScript design system following Atomic Design methodology with Storybook, TailwindCSS, Jest, and modern development practices.
+This is a React 18 TypeScript design system following Atomic Design methodology with Storybook, TailwindCSS, Playwright, and modern development practices.
 
 ## 📁 Project Structure
 ```
@@ -59,7 +59,7 @@ When creating new components:
    ```
    ComponentName/
    ├── ComponentName.tsx      # Main component
-   ├── ComponentName.test.tsx # Jest tests
+   ├── ComponentName.spec.tsx # Playwright Component Tests
    ├── ComponentName.stories.tsx # Storybook stories
    └── index.ts              # Barrel export
    ```
@@ -95,10 +95,11 @@ When creating new components:
    ```
 
 3. **Testing Requirements**:
-   - Unit tests for all components
-   - Accessibility tests (WCAG 2.1 AA)
+   - Component tests using Playwright CT for all components
+   - Accessibility tests (WCAG 2.1 AA) with Axe
    - Interaction tests for complex components
-   - Visual regression tests via Storybook
+   - Visual regression tests via Playwright E2E
+   - E2E tests for Storybook stories
 
 4. **Storybook Stories**:
    - Default story showing basic usage
@@ -131,40 +132,59 @@ Neutral: neutral-{50-950}
 
 ## 🧪 Testing Standards
 
-### Jest + React Testing Library
+### Playwright Component Testing
+- Test components in real browsers (Chrome, Firefox, Safari)
 - Test component rendering and behavior
-- Mock external dependencies
-- Use `data-testid` for test targeting
-- Test accessibility with `@testing-library/jest-dom`
+- Use proper roles and accessibility queries
+- Better visual validation than traditional unit tests
 
 ### Test Structure
 ```tsx
-describe('ComponentName', () => {
-  describe('Rendering', () => {
-    it('should render with default props', () => {
-      // Test basic rendering
+import { test, expect } from '@playwright/experimental-ct-react';
+import { ComponentName } from './ComponentName';
+
+test.describe('ComponentName', () => {
+  test.describe('Rendering', () => {
+    test('should render with default props', async ({ mount }) => {
+      const component = await mount(<ComponentName />);
+      await expect(component.getByRole('button')).toBeVisible();
     });
   });
   
-  describe('Variants', () => {
-    it('should apply variant classes', () => {
-      // Test different variants
+  test.describe('Variants', () => {
+    test('should apply variant classes', async ({ mount }) => {
+      const component = await mount(<ComponentName variant="primary" />);
+      const element = component.getByRole('button');
+      await expect(element).toHaveClass(/bg-primary/);
     });
   });
   
-  describe('Interactions', () => {
-    it('should handle click events', () => {
-      // Test user interactions
+  test.describe('Interactions', () => {
+    test('should handle click events', async ({ mount }) => {
+      let clicked = false;
+      const component = await mount(
+        <ComponentName onClick={() => { clicked = true; }} />
+      );
+      await component.getByRole('button').click();
+      expect(clicked).toBe(true);
     });
   });
   
-  describe('Accessibility', () => {
-    it('should be accessible', () => {
-      // Test ARIA attributes, keyboard navigation
+  test.describe('Accessibility', () => {
+    test('should be accessible', async ({ mount }) => {
+      const component = await mount(<ComponentName />);
+      const element = component.getByRole('button');
+      await expect(element).toHaveAttribute('aria-label');
     });
   });
 });
 ```
+
+### E2E Testing with Playwright
+- E2E tests located in `e2e/` directory
+- Tests validate Storybook stories
+- Visual regression testing included
+- Accessibility testing with Axe integrated
 
 ## 📚 Storybook Best Practices
 
@@ -229,7 +249,11 @@ export const Default: Story = {
 ### Scripts
 - `npm run dev` - Development server
 - `npm run build` - Production build
-- `npm run test` - Run all tests
+- `npm test` - Run all Playwright tests
+- `npm run test:ct` - Component Tests only
+- `npm run test:e2e` - E2E Tests only
+- `npm run test:ui` - Interactive test UI
+- `npm run test:debug` - Debug mode
 - `npm run storybook` - Storybook development
 - `npm run lint` - ESLint check
 - `npm run format` - Prettier formatting
@@ -259,7 +283,9 @@ export const Default: Story = {
 
 ### Before Submitting PR
 - [ ] Component follows atomic design principles
-- [ ] All tests pass (unit, integration, accessibility)
+- [ ] All Playwright tests pass (Component + E2E)
+- [ ] Visual regression tests approved
+- [ ] Accessibility tests pass (Axe)
 - [ ] Storybook stories created with documentation
 - [ ] TypeScript types are explicit and correct
 - [ ] TailwindCSS classes follow design tokens
@@ -279,12 +305,12 @@ export const Default: Story = {
 ## 🎯 Quality Gates
 
 ### Must Pass Before Merge
-- All Jest tests passing
+- All Playwright tests passing (Component + E2E)
+- Visual regression tests approved
+- Accessibility tests pass (Axe)
 - Storybook builds successfully
 - ESLint and Prettier checks pass
 - TypeScript compilation without errors
-- Accessibility tests pass
-- Visual regression tests approved (Chromatic)
 
 ---
 

@@ -1,0 +1,1039 @@
+{
+  "config": {
+    "configFile": "/home/sunde/projects/Lidr/frontend-use-case-design-system/playwright.config.ts",
+    "rootDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 10
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/e2e"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/e2e/results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 10
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 10
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 10
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 10
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 10
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 10,
+    "webServer": {
+      "command": "npm run storybook",
+      "url": "http://localhost:6006",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "storybook/visual.spec.ts",
+      "file": "storybook/visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Storybook - Visual Regression",
+          "file": "storybook/visual.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should match button variants screenshot",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6964,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-primary.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-primary.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-primary.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-primary.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:10:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m\n \u001b[90m  9 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-primary.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should match button disabled state'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-primary.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-primary.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m  8 |\u001b[39m\n \u001b[90m  9 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-primary.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m   test(\u001b[32m'should match button disabled state'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:10:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.233Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-5306d--button-variants-screenshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-5306d--button-variants-screenshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-5306d--button-variants-screenshot-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-5306d--button-variants-screenshot-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-418aa98d1772809a75b2",
+              "file": "storybook/visual.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "should match button disabled state",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 6944,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-disabled.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-disabled.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-disabled.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-disabled.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:18:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 18
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-disabled.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   test(\u001b[32m'should match input with label'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: button-disabled.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(button-disabled.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-disabled.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   test(\u001b[32m'should match input with label'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:18:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.291Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-bb14d-match-button-disabled-state-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-bb14d-match-button-disabled-state-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-bb14d-match-button-disabled-state-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-bb14d-match-button-disabled-state-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 18
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-73246f6261af2ba05180",
+              "file": "storybook/visual.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "should match input with label",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 6923,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-with-label.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-with-label.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-with-label.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-with-label.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:26:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 26
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'input-with-label.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   test(\u001b[32m'should match input error state'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 26
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-with-label.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-with-label.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'input-with-label.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   test(\u001b[32m'should match input error state'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:26:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.299Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-0a845-ould-match-input-with-label-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-0a845-ould-match-input-with-label-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-0a845-ould-match-input-with-label-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-0a845-ould-match-input-with-label-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 26
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-7204e36525938a6de93e",
+              "file": "storybook/visual.spec.ts",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "should match input error state",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 6856,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-error.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-error.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-error.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-error.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:34:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 34
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 32 |\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'input-error.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 35 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m   test(\u001b[32m'should match tag component variants'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 34
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: input-error.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(input-error.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 32 |\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'input-error.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 35 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m   test(\u001b[32m'should match tag component variants'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:34:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.313Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-ce461-uld-match-input-error-state-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-ce461-uld-match-input-error-state-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-ce461-uld-match-input-error-state-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-ce461-uld-match-input-error-state-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 34
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-73713fa59f1746bedc62",
+              "file": "storybook/visual.spec.ts",
+              "line": 29,
+              "column": 3
+            },
+            {
+              "title": "should match tag component variants",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 6480,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-blue.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-blue.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-blue.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-blue.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:43:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 43
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--blue'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-blue.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Green tag\u001b[39m\n \u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--green'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 43
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-blue.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-blue.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--blue'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-blue.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Green tag\u001b[39m\n \u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--green'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:43:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.232Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c9564-atch-tag-component-variants-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c9564-atch-tag-component-variants-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c9564-atch-tag-component-variants-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c9564-atch-tag-component-variants-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 43
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-1573e4c130fa8de64dc4",
+              "file": "storybook/visual.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "should match tag sizes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "failed",
+                      "duration": 6685,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:57:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 57
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--small'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-small.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 58 |\u001b[39m     \n \u001b[90m 59 |\u001b[39m     \u001b[90m// Large tag\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--large'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 57
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--small'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 57 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-small.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 58 |\u001b[39m     \n \u001b[90m 59 |\u001b[39m     \u001b[90m// Large tag\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-tag--large'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:57:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.242Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-10027-sion-should-match-tag-sizes-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-10027-sion-should-match-tag-sizes-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-10027-sion-should-match-tag-sizes-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-10027-sion-should-match-tag-sizes-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 57
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-0e2dfc183a24fec78722",
+              "file": "storybook/visual.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "should match card variants",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "failed",
+                      "duration": 6975,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-elevated.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-elevated.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-elevated.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-elevated.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:71:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 71
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 69 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-card--elevated'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 70 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 71 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'card-elevated.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 72 |\u001b[39m     \n \u001b[90m 73 |\u001b[39m     \u001b[90m// Outlined card\u001b[39m\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-card--outlined'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 71
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-elevated.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-elevated.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 69 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-card--elevated'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 70 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 71 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'card-elevated.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 72 |\u001b[39m     \n \u001b[90m 73 |\u001b[39m     \u001b[90m// Outlined card\u001b[39m\n \u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'molecules-card--outlined'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:71:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.300Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-8299d--should-match-card-variants-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-8299d--should-match-card-variants-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-8299d--should-match-card-variants-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-8299d--should-match-card-variants-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 71
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-055c7fe39047a76b7b33",
+              "file": "storybook/visual.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "should match icon sizes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "failed",
+                      "duration": 6852,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: icon-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(icon-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: icon-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(icon-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:90:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 90
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 88 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'atoms-icon--small'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'icon-small.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m     \n \u001b[90m 92 |\u001b[39m     \u001b[90m// Large icon\u001b[39m\n \u001b[90m 93 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'atoms-icon--large'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 90
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: icon-small.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(icon-small.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 88 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'atoms-icon--small'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 89 |\u001b[39m     \u001b[36mlet\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'icon-small.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 91 |\u001b[39m     \n \u001b[90m 92 |\u001b[39m     \u001b[90m// Large icon\u001b[39m\n \u001b[90m 93 |\u001b[39m     \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mnavigateToStory(\u001b[32m'atoms-icon--large'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:90:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.286Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-f07d4-ion-should-match-icon-sizes-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-f07d4-ion-should-match-icon-sizes-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-f07d4-ion-should-match-icon-sizes-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-f07d4-ion-should-match-icon-sizes-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 90
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-b0e7903d423c13b5084e",
+              "file": "storybook/visual.spec.ts",
+              "line": 84,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Storybook - Responsive Design",
+          "file": "storybook/visual.spec.ts",
+          "line": 99,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should render components correctly on mobile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 8,
+                      "status": "failed",
+                      "duration": 6869,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().getByRole('button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().getByRole('button')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().getByRole('button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().getByRole('button')\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:109:26",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 26,
+                          "line": 109
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mconst\u001b[39m button \u001b[33m=\u001b[39m canvas\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 108 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 109 |\u001b[39m     \u001b[36mawait\u001b[39m expect(button)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 110 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-mobile.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 111 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 112 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 26,
+                            "line": 109
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().getByRole('button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().getByRole('button')\u001b[22m\n\n\n\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mconst\u001b[39m button \u001b[33m=\u001b[39m canvas\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 108 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 109 |\u001b[39m     \u001b[36mawait\u001b[39m expect(button)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 110 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'button-mobile.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 111 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 112 |\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:109:26\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.232Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-26eeb-ponents-correctly-on-mobile-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-26eeb-ponents-correctly-on-mobile-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-26eeb-ponents-correctly-on-mobile-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-26eeb-ponents-correctly-on-mobile-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 26,
+                        "line": 109
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-6c493a9db2f05d499ede",
+              "file": "storybook/visual.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "should render components correctly on tablet",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 9,
+                      "status": "failed",
+                      "duration": 6924,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-tablet.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-tablet.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-tablet.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-tablet.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:120:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 120
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 118 |\u001b[39m\n \u001b[90m 119 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'card-tablet.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 121 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\n \u001b[90m 123 |\u001b[39m   test(\u001b[32m'should render components correctly on desktop'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 120
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: card-tablet.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(card-tablet.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 118 |\u001b[39m\n \u001b[90m 119 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'card-tablet.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 121 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\n \u001b[90m 123 |\u001b[39m   test(\u001b[32m'should render components correctly on desktop'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:120:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:02.286Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c1fc0-ponents-correctly-on-tablet-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c1fc0-ponents-correctly-on-tablet-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c1fc0-ponents-correctly-on-tablet-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-c1fc0-ponents-correctly-on-tablet-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 120
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-c2be407c818af12b6ad8",
+              "file": "storybook/visual.spec.ts",
+              "line": 113,
+              "column": 3
+            },
+            {
+              "title": "should render components correctly on desktop",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 5945,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-desktop.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-desktop.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-desktop.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-desktop.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:130:42",
+                        "location": {
+                          "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                          "column": 42,
+                          "line": 130
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 128 |\u001b[39m\n \u001b[90m 129 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 130 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-desktop.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 131 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 132 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 133 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                            "column": 42,
+                            "line": 130
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#storybook-preview-iframe').contentFrame().locator('body')\nTimeout: 5000ms\n  Timeout 5000ms exceeded.\n\n  Snapshot: tag-desktop.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(tag-desktop.png)\" with timeout 5000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - waiting for locator('#storybook-preview-iframe').contentFrame().locator('body')\u001b[22m\n\u001b[2m  - Timeout 5000ms exceeded.\u001b[22m\n\n\n\u001b[0m \u001b[90m 128 |\u001b[39m\n \u001b[90m 129 |\u001b[39m     \u001b[36mconst\u001b[39m canvas \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m storybook\u001b[33m.\u001b[39mgetStoryCanvas()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 130 |\u001b[39m     \u001b[36mawait\u001b[39m expect(canvas\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m))\u001b[33m.\u001b[39mtoHaveScreenshot(\u001b[32m'tag-desktop.png'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 131 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 132 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 133 |\u001b[39m\u001b[0m\n\u001b[2m    at /home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts:130:42\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-04T20:28:09.663Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-cc4e3-onents-correctly-on-desktop-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-cc4e3-onents-correctly-on-desktop-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-cc4e3-onents-correctly-on-desktop-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/sunde/projects/Lidr/frontend-use-case-design-system/test-results/storybook-visual-Storybook-cc4e3-onents-correctly-on-desktop-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/sunde/projects/Lidr/frontend-use-case-design-system/e2e/storybook/visual.spec.ts",
+                        "column": 42,
+                        "line": 130
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3fc8d6c614b0fa224b4e-006940cee770bea60c73",
+              "file": "storybook/visual.spec.ts",
+              "line": 123,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-04T20:28:01.326Z",
+    "duration": 14457.961000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 11,
+    "flaky": 0
+  }
+}
