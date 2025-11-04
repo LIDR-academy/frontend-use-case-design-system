@@ -1,0 +1,291 @@
+# Civitatis Design System - Cursor Rules
+
+## 🎯 Project Overview
+This is a React 18 TypeScript design system following Atomic Design methodology with Storybook, TailwindCSS, Jest, and modern development practices.
+
+## 📁 Project Structure
+```
+src/
+├── components/
+│   ├── atoms/        # Basic UI elements (Button, Input, Icon)
+│   ├── molecules/    # Combined atoms (SearchBox, FormField, Card)
+│   ├── organisms/    # Complex components (Header, Footer, Forms)
+│   └── templates/    # Page layouts and structures
+├── pages/           # Complete pages with real content
+├── styles/          # Global styles and theme
+├── utils/           # Helper functions and hooks
+└── services/        # API and external services
+```
+
+## 🧬 Atomic Design Rules
+
+### Atoms (atoms/)
+- Single-purpose, indivisible UI components
+- No business logic, only presentation
+- High reusability across the system
+- Simple, predictable props interface
+- Examples: Button, Input, Icon, Label, Badge
+
+### Molecules (molecules/)
+- Combination of 2+ atoms working together
+- Cohesive functionality with simple state
+- Props that orchestrate internal atoms
+- Examples: SearchBox, FormField, Card, Tag
+
+### Organisms (organisms/)
+- Complex components forming UI sections
+- Can handle business logic and state management
+- May integrate with APIs and external services
+- Examples: Header, Footer, ProductCard, LoginForm
+
+### Templates (templates/)
+- Page structure without real content
+- Reusable layouts using organisms
+- Placeholder content for demonstration
+- Examples: DashboardTemplate, ProductListTemplate
+
+### Pages (pages/)
+- Complete pages with real content
+- Route-level components
+- Global state management
+- SEO and performance optimization
+
+## 🛠️ Development Standards
+
+### Component Creation
+When creating new components:
+
+1. **File Structure** (for each component):
+   ```
+   ComponentName/
+   ├── ComponentName.tsx      # Main component
+   ├── ComponentName.test.tsx # Jest tests
+   ├── ComponentName.stories.tsx # Storybook stories
+   └── index.ts              # Barrel export
+   ```
+
+2. **Component Template**:
+   ```tsx
+   import React from 'react';
+   
+   export interface ComponentNameProps {
+     // Props with clear types
+     children?: React.ReactNode;
+     variant?: 'primary' | 'secondary';
+     size?: 'sm' | 'md' | 'lg';
+     disabled?: boolean;
+     className?: string;
+   }
+   
+   export const ComponentName: React.FC<ComponentNameProps> = ({
+     children,
+     variant = 'primary',
+     size = 'md',
+     disabled = false,
+     className = '',
+     ...props
+   }) => {
+     // Component logic here
+     return (
+       <div className={`base-styles ${variantStyles[variant]} ${className}`} {...props}>
+         {children}
+       </div>
+     );
+   };
+   ```
+
+3. **Testing Requirements**:
+   - Unit tests for all components
+   - Accessibility tests (WCAG 2.1 AA)
+   - Interaction tests for complex components
+   - Visual regression tests via Storybook
+
+4. **Storybook Stories**:
+   - Default story showing basic usage
+   - All variants and states
+   - Interactive examples
+   - Documentation with argTypes
+
+## 🎨 Design System Guidelines
+
+### TailwindCSS Usage
+- Use design tokens from `tailwind.config.cjs`
+- Semantic color classes: `text-primary`, `bg-surface-primary`
+- Consistent spacing: `p-4`, `m-2`, `gap-3`
+- Responsive design: `sm:`, `md:`, `lg:` prefixes
+
+### Color System
+```
+Primary: primary-{50-950}
+Secondary: secondary-{50-950}
+Success: success-{50-950}
+Warning: warning-{50-950}
+Error: error-{50-950}
+Neutral: neutral-{50-950}
+```
+
+### Typography
+- Font families: `font-sans`, `font-serif`, `font-mono`
+- Font sizes: `text-xs` to `text-6xl`
+- Font weights: `font-normal`, `font-medium`, `font-semibold`, `font-bold`
+
+## 🧪 Testing Standards
+
+### Jest + React Testing Library
+- Test component rendering and behavior
+- Mock external dependencies
+- Use `data-testid` for test targeting
+- Test accessibility with `@testing-library/jest-dom`
+
+### Test Structure
+```tsx
+describe('ComponentName', () => {
+  describe('Rendering', () => {
+    it('should render with default props', () => {
+      // Test basic rendering
+    });
+  });
+  
+  describe('Variants', () => {
+    it('should apply variant classes', () => {
+      // Test different variants
+    });
+  });
+  
+  describe('Interactions', () => {
+    it('should handle click events', () => {
+      // Test user interactions
+    });
+  });
+  
+  describe('Accessibility', () => {
+    it('should be accessible', () => {
+      // Test ARIA attributes, keyboard navigation
+    });
+  });
+});
+```
+
+## 📚 Storybook Best Practices
+
+### Story Structure
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentName } from './ComponentName';
+
+const meta: Meta<typeof ComponentName> = {
+  title: 'Atoms/ComponentName',
+  component: ComponentName,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'Component description here.',
+      },
+    },
+  },
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+      description: 'Visual variant of the component',
+    },
+  },
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Example content',
+  },
+};
+```
+
+## 🚀 Code Quality Rules
+
+### TypeScript
+- Strict mode enabled
+- Explicit return types for public functions
+- Use interfaces for props, types for unions
+- No `any` types - use proper typing
+
+### Code Style
+- Use Prettier for formatting
+- ESLint for code quality
+- Functional components with hooks
+- Descriptive variable and function names
+
+### Performance
+- Use React.memo() for expensive components
+- Lazy load heavy components
+- Optimize images and assets
+- Bundle size monitoring
+
+## 🔧 Build & Development
+
+### Scripts
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run test` - Run all tests
+- `npm run storybook` - Storybook development
+- `npm run lint` - ESLint check
+- `npm run format` - Prettier formatting
+
+### Git Workflow
+- Feature branches from `main`
+- Conventional commits: `feat:`, `fix:`, `docs:`, `test:`
+- PR reviews required
+- CI/CD with GitHub Actions
+
+## 🎭 Component Migration Rules
+
+### From UI to Atomic Structure
+1. Identify component complexity level
+2. Move to appropriate atomic level
+3. Update imports across codebase
+4. Maintain backward compatibility
+5. Update documentation
+
+### Naming Conventions
+- PascalCase for components: `ButtonPrimary`
+- camelCase for props: `isDisabled`
+- kebab-case for CSS classes: `btn-primary`
+- UPPER_CASE for constants: `DEFAULT_SIZE`
+
+## 🔍 Code Review Checklist
+
+### Before Submitting PR
+- [ ] Component follows atomic design principles
+- [ ] All tests pass (unit, integration, accessibility)
+- [ ] Storybook stories created with documentation
+- [ ] TypeScript types are explicit and correct
+- [ ] TailwindCSS classes follow design tokens
+- [ ] Component is responsive and accessible
+- [ ] Performance optimizations applied
+- [ ] Git commit messages follow convention
+
+### Review Focus Areas
+- Atomic design classification correctness
+- Props interface design and flexibility
+- Test coverage and quality
+- Storybook documentation completeness
+- Accessibility compliance
+- Performance implications
+- Code reusability and maintainability
+
+## 🎯 Quality Gates
+
+### Must Pass Before Merge
+- All Jest tests passing
+- Storybook builds successfully
+- ESLint and Prettier checks pass
+- TypeScript compilation without errors
+- Accessibility tests pass
+- Visual regression tests approved (Chromatic)
+
+---
+
+**Remember**: We're building a scalable, maintainable design system that follows industry best practices and serves as the foundation for all Civitatis digital products.

@@ -1,0 +1,6 @@
+{
+  "buildScriptName": "build-storybook",
+  "autoAcceptChanges": "main",
+  "exitZeroOnChanges": true,
+  "storybookBaseDir": "."
+}

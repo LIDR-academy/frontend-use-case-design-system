@@ -1,0 +1,21 @@
+# Environment Variables Template
+# Copy this file to .env and fill in your actual values
+
+# Chromatic Configuration
+# 1. Go to https://www.chromatic.com/
+# 2. Login with your GitHub account
+# 3. Select your repository
+# 4. Copy the project token
+CHROMATIC_PROJECT_TOKEN=your_chromatic_project_token_here
+
+# Codecov Configuration (optional)
+# 1. Go to https://codecov.io/
+# 2. Connect your repository
+# 3. Copy the token from Settings
+CODECOV_TOKEN=your_codecov_token_here
+
+# GitHub Configuration
+GITHUB_REPO_URL=https://github.com/LuisEUM/design-system-storybook
+
+# Node Environment
+NODE_ENV=development
