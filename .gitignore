@@ -96,3 +96,9 @@ temp/
 
 # Chromatic
 chromatic-diagnostics.json
+
+# Playwright
+test-results/
+playwright-report/
+.playwright-mcp/
+playwright/.cache/

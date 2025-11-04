@@ -67,15 +67,25 @@ npm run preview      # Vista previa de la build de producción
 
 ### Testing
 
+> 📖 **Documentación completa**: Ver [TESTING.md](./TESTING.md) para guía detallada
+
 ```bash
-npm test             # Ejecuta todos los tests con Playwright
-npm run test:ct      # Ejecuta Component Tests (tests unitarios)
-npm run test:e2e     # Ejecuta tests E2E de Storybook
-npm run test:ui      # Abre interfaz interactiva de Playwright
-npm run test:debug   # Ejecuta tests en modo debug
-npm run test:report  # Muestra el reporte de tests
-npm run test:install # Instala navegadores de Playwright
+npm test                          # Tests E2E rápidos (Chromium) - 43 tests en ~30s
+npm run test:e2e:all             # Todos los navegadores - 215 tests en ~1min
+npm run test:e2e:ui              # Interfaz interactiva de Playwright
+npm run test:e2e:headed          # Tests con navegador visible
+npm run test:e2e:debug           # Modo debug paso a paso
+npm run test:e2e:update-snapshots # Actualizar screenshots de visual regression
+npm run test:report              # Ver reporte HTML interactivo
+npm run test:install             # Instalar navegadores de Playwright (primera vez)
 ```
+
+**Estado actual**: ✅ 215/215 tests pasando (100%)
+- 12 tests de accesibilidad (WCAG 2.1 AA)
+- 20 tests de componentes (Atoms + Molecules)
+- 11 tests visuales + responsive
+
+**Navegadores soportados**: Chromium, Firefox, WebKit/Safari, Mobile Chrome, Mobile Safari
 
 ### Code Quality
 
