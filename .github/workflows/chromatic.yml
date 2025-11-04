@@ -90,16 +90,10 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
 
-      - name: Run tests with coverage
-        run: npm run test:coverage
+      - name: Run E2E tests (all browsers)
+        run: npm run test:e2e:all
 
       - name: Build project
         run: npm run build
-
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/lcov.info

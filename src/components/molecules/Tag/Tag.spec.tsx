@@ -42,7 +42,9 @@ test.describe('Tag Component', () => {
     });
 
     test('should not render text when showText is false', async ({ mount }) => {
-      const component = await mount(<Tag text="Hidden Text" showText={false} />);
+      const component = await mount(
+        <Tag text="Hidden Text" showText={false} />
+      );
       await expect(component.getByText('Hidden Text')).not.toBeVisible();
     });
   });
@@ -271,9 +273,8 @@ test.describe('Tag Component', () => {
     test('should support keyboard interaction when clickable', async ({
       mount,
     }) => {
-      let clicked = false;
       const handleClick = () => {
-        clicked = true;
+        // Click handler for testing keyboard interaction
       };
 
       const component = await mount(<Tag onClick={handleClick} />);
@@ -288,4 +289,3 @@ test.describe('Tag Component', () => {
     });
   });
 });
-
