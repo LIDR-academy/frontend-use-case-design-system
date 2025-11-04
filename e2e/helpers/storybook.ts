@@ -18,9 +18,13 @@ export class StorybookHelper {
 
   /**
    * Get the story canvas (iframe content)
+   * When navigating to /iframe.html, we're already in the iframe content,
+   * so we return the page locator directly
    */
   async getStoryCanvas() {
-    return this.page.frameLocator('#storybook-preview-iframe');
+    // Since we navigate directly to iframe.html, we're already in the story canvas
+    // No need to look for an iframe within the page
+    return this.page.locator('body');
   }
 
   /**

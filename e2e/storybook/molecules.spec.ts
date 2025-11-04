@@ -13,50 +13,51 @@ test.describe('Storybook - Molecules', () => {
       await expect(tag).toBeVisible();
     });
 
-    test('should render tag with different colors', async ({ page }) => {
+    test('should render tag with different types', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      
-      // Test blue tag
-      await storybook.navigateToStory('molecules-tag--blue');
+
+      // Test positive tag
+      await storybook.navigateToStory('molecules-tag--positive');
       let canvas = await storybook.getStoryCanvas();
-      let tag = canvas.locator('div').first();
+      let tag = canvas.getByText('Positivo');
       await expect(tag).toBeVisible();
-      
-      // Test green tag
-      await storybook.navigateToStory('molecules-tag--green');
+
+      // Test negative tag
+      await storybook.navigateToStory('molecules-tag--negative');
       canvas = await storybook.getStoryCanvas();
-      tag = canvas.locator('div').first();
+      tag = canvas.getByText('Negativo');
       await expect(tag).toBeVisible();
     });
 
     test('should render tag with different sizes', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      
+
       // Test small
       await storybook.navigateToStory('molecules-tag--small');
       let canvas = await storybook.getStoryCanvas();
-      await expect(canvas.locator('div').first()).toBeVisible();
-      
+      let tag = canvas.getByText('Pequeño');
+      await expect(tag).toBeVisible();
+
       // Test large
       await storybook.navigateToStory('molecules-tag--large');
       canvas = await storybook.getStoryCanvas();
-      await expect(canvas.locator('div').first()).toBeVisible();
+      tag = canvas.getByText('Grande');
+      await expect(tag).toBeVisible();
     });
 
-    test('should render clickable tag', async ({ page }) => {
+    test('should render tag with icon variations', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('molecules-tag--clickable');
+      await storybook.navigateToStory('molecules-tag--only-start-icon');
 
       const canvas = await storybook.getStoryCanvas();
-      const tag = canvas.getByRole('button');
+      const icons = canvas.locator('svg');
 
-      await expect(tag).toBeVisible();
-      await tag.click();
+      await expect(icons).toHaveCount(1);
     });
 
     test('should render tag without icons', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('molecules-tag--no-icons');
+      await storybook.navigateToStory('molecules-tag--without-icons');
 
       const canvas = await storybook.getStoryCanvas();
       const icons = canvas.locator('svg');
@@ -72,9 +73,9 @@ test.describe('Storybook - Molecules', () => {
       await storybook.navigateToStory('molecules-card--default');
 
       const canvas = await storybook.getStoryCanvas();
-      const card = canvas.locator('div').first();
+      const cardContent = canvas.getByText(/Esta es una card básica/);
 
-      await expect(card).toBeVisible();
+      await expect(cardContent).toBeVisible();
     });
 
     test('should render card with title', async ({ page }) => {
@@ -89,21 +90,24 @@ test.describe('Storybook - Molecules', () => {
 
     test('should render different card variants', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      
+
       // Test elevated variant
       await storybook.navigateToStory('molecules-card--elevated');
       let canvas = await storybook.getStoryCanvas();
-      await expect(canvas.locator('div').first()).toBeVisible();
-      
+      let cardContent = canvas.getByText(/Card Elevated/);
+      await expect(cardContent).toBeVisible();
+
       // Test outlined variant
       await storybook.navigateToStory('molecules-card--outlined');
       canvas = await storybook.getStoryCanvas();
-      await expect(canvas.locator('div').first()).toBeVisible();
-      
+      cardContent = canvas.getByText(/Card Outlined/);
+      await expect(cardContent).toBeVisible();
+
       // Test filled variant
       await storybook.navigateToStory('molecules-card--filled');
       canvas = await storybook.getStoryCanvas();
-      await expect(canvas.locator('div').first()).toBeVisible();
+      cardContent = canvas.getByText(/Card Filled/);
+      await expect(cardContent).toBeVisible();
     });
 
     test('should render clickable card', async ({ page }) => {

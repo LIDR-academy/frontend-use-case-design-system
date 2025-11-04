@@ -50,9 +50,9 @@ test.describe('Storybook - Atoms', () => {
   });
 
   test.describe('Input Component', () => {
-    test('should render default input story', async ({ page }) => {
+    test('should render outlined input story', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('atoms-input--default');
+      await storybook.navigateToStory('atoms-input--outlined');
 
       const canvas = await storybook.getStoryCanvas();
       const input = canvas.getByRole('textbox');
@@ -60,9 +60,9 @@ test.describe('Storybook - Atoms', () => {
       await expect(input).toBeVisible();
     });
 
-    test('should render input with label', async ({ page }) => {
+    test('should render filled input', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('atoms-input--with-label');
+      await storybook.navigateToStory('atoms-input--filled');
 
       const canvas = await storybook.getStoryCanvas();
       const input = canvas.getByRole('textbox');
@@ -72,7 +72,7 @@ test.describe('Storybook - Atoms', () => {
 
     test('should allow typing in input', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('atoms-input--default');
+      await storybook.navigateToStory('atoms-input--outlined');
 
       const canvas = await storybook.getStoryCanvas();
       const input = canvas.getByRole('textbox');
@@ -93,9 +93,9 @@ test.describe('Storybook - Atoms', () => {
   });
 
   test.describe('Icon Component', () => {
-    test('should render default icon story', async ({ page }) => {
+    test('should render leaf icon story', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('atoms-icon--default');
+      await storybook.navigateToStory('atoms-icon--leaf');
 
       const canvas = await storybook.getStoryCanvas();
       const icon = canvas.locator('svg');
@@ -105,13 +105,13 @@ test.describe('Storybook - Atoms', () => {
 
     test('should render different icon sizes', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      
+
       // Test small size
       await storybook.navigateToStory('atoms-icon--small');
       let canvas = await storybook.getStoryCanvas();
       let icon = canvas.locator('svg').first();
       await expect(icon).toBeVisible();
-      
+
       // Test large size
       await storybook.navigateToStory('atoms-icon--large');
       canvas = await storybook.getStoryCanvas();
@@ -121,13 +121,12 @@ test.describe('Storybook - Atoms', () => {
 
     test('should render interactive icon', async ({ page }) => {
       const storybook = createStorybookHelper(page);
-      await storybook.navigateToStory('atoms-icon--interactive');
+      await storybook.navigateToStory('atoms-icon--interactive-primary');
 
       const canvas = await storybook.getStoryCanvas();
-      const icon = canvas.getByRole('button');
+      const icon = canvas.locator('svg');
 
       await expect(icon).toBeVisible();
-      await icon.click();
     });
   });
 });

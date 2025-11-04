@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, expect } from '@storybook/test';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import { Card } from './Card';
 
 const meta: Meta<typeof Card> = {

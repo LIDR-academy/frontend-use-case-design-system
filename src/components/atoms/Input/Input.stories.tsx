@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, expect } from '@storybook/test';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {

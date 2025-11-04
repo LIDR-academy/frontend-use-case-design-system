@@ -34,16 +34,19 @@ export default defineConfig({
   use: {
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
-    
+
     /* Port to use for the development server */
     ctPort: 3100,
-    
+
     /* Vite config for component testing */
     ctViteConfig: {
       resolve: {
         alias: {
           '@': '/src',
         },
+      },
+      css: {
+        postcss: './postcss.config.cjs',
       },
     },
   },
