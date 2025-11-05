@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 /**
  * Helper functions for navigating and interacting with Storybook
@@ -73,7 +73,9 @@ export class StorybookHelper {
    */
   async screenshotStory(name: string): Promise<void> {
     const canvas = await this.getStoryCanvas();
-    await canvas.locator('body').screenshot({ path: `screenshots/${name}.png` });
+    await canvas
+      .locator('body')
+      .screenshot({ path: `screenshots/${name}.png` });
   }
 
   /**
@@ -91,4 +93,3 @@ export class StorybookHelper {
 export function createStorybookHelper(page: Page): StorybookHelper {
   return new StorybookHelper(page);
 }
-

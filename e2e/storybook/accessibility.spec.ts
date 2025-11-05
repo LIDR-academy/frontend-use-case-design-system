@@ -10,8 +10,6 @@ test.describe('Storybook - Accessibility', () => {
       const storybook = createStorybookHelper(page);
       await storybook.navigateToStory('atoms-button--primary');
 
-      const canvas = await storybook.getStoryCanvas();
-
       // Run accessibility scan on the page directly (we're already in iframe.html)
       // Disable best-practice rules that are limitations of Storybook's iframe
       const accessibilityScanResults = await new AxeBuilder({ page })
@@ -70,9 +68,7 @@ test.describe('Storybook - Accessibility', () => {
   });
 
   test.describe('Icon Accessibility', () => {
-    test('decorative icon should be visible', async ({
-      page,
-    }) => {
+    test('decorative icon should be visible', async ({ page }) => {
       const storybook = createStorybookHelper(page);
       await storybook.navigateToStory('atoms-icon--leaf');
 
@@ -112,7 +108,7 @@ test.describe('Storybook - Accessibility', () => {
       const card = canvas.getByRole('button');
 
       await expect(card).toHaveAttribute('tabIndex', '0');
-      
+
       // Should be focusable
       await card.focus();
       await expect(card).toBeFocused();
@@ -130,9 +126,7 @@ test.describe('Storybook - Accessibility', () => {
       await expect(tag).toBeVisible();
     });
 
-    test('tag with icons should be visible', async ({
-      page,
-    }) => {
+    test('tag with icons should be visible', async ({ page }) => {
       const storybook = createStorybookHelper(page);
       await storybook.navigateToStory('molecules-tag--only-start-icon');
 
@@ -172,4 +166,3 @@ test.describe('Storybook - Accessibility', () => {
     });
   });
 });
-
