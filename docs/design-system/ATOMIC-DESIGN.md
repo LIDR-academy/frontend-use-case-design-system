@@ -1,4 +1,4 @@
-# Atomic Design System - Civitatis
+# Atomic Design System - Lidr
 
 ## 📚 Introducción
 
@@ -331,4 +331,4 @@ src/components/ui/
 ---
 
 **Última actualización:** Septiembre 2025
-**Mantenedores:** Equipo Design System Civitatis
+**Mantenedores:** Equipo Design System Lidr
