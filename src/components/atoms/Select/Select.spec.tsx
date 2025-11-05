@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/experimental-ct-react';
-import React from 'react';
 import { Select } from './Select';
 
 const mockOptions = [
