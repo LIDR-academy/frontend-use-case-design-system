@@ -197,13 +197,7 @@ When asked to create a component, follow this process:
 7. **Test**: Write Playwright component tests + accessibility tests
 8. **Document**: Create Storybook stories for all variants
 9. **Export**: Add barrel export in index.ts
-10. **Update Demo**: Add component to src/App.tsx for visual demonstration
-    - Import the component at the top of the file
-    - Add a new section showcasing the component with its variants, sizes, and states
-    - Follow the existing pattern in App.tsx (use Card wrapper, organized grid layout)
-    - Include interactive examples demonstrating key features
-    - Ensure the section title follows the format: "🎨 Componente [ComponentName]"
-11. **Verify**: Ensure linting passes and all tests pass
+10. **Verify**: Ensure linting passes and all tests pass
 
 ## Code Review Approach
 
