@@ -10,3 +10,6 @@ export type { IconProps, IconName } from './Icon/Icon';
 
 export { Tooltip } from './Tooltip/Tooltip';
 export type { TooltipProps } from './Tooltip/Tooltip';
+
+export { Select } from './Select/Select';
+export type { SelectProps, SelectOption } from './Select/Select';
