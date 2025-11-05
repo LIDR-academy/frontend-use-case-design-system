@@ -20,12 +20,12 @@ function App() {
   };
 
   return (
-    <Layout title="Civitatis Design System - Demo Completa">
+    <Layout title="Lidr Design System - Demo Completa">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Hero Section */}
         <div className="text-center space-y-6">
           <h1 className="text-5xl font-bold text-text-primary">
-            🎨 Civitatis Design System
+            🎨 Lidr Design System
           </h1>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
             Una colección completa de componentes React reutilizables con

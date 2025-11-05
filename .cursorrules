@@ -1,4 +1,4 @@
-# Civitatis Design System - Cursor Rules
+# Lidr Design System - Cursor Rules
 
 ## 🎯 Project Overview
 This is a React 18 TypeScript design system following Atomic Design methodology with Storybook, TailwindCSS, Playwright, and modern development practices.
@@ -314,4 +314,4 @@ export const Default: Story = {
 
 ---
 
-**Remember**: We're building a scalable, maintainable design system that follows industry best practices and serves as the foundation for all Civitatis digital products.
+**Remember**: We're building a scalable, maintainable design system that follows industry best practices and serves as the foundation for all Lidr digital products.

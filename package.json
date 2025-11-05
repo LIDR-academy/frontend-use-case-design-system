@@ -1,8 +1,8 @@
 {
-  "name": "@civitatis/design-system",
+  "name": "@lidr/design-system",
   "private": false,
   "version": "1.0.0",
-  "description": "Design System for Civitatis - Modern React components with TypeScript",
+  "description": "Lidr Design System - Modern React components with TypeScript",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -30,16 +30,16 @@
     "tailwindcss",
     "storybook"
   ],
-  "author": "Civitatis Team",
+  "author": "Lidr Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/civitatis/design-system.git"
+    "url": "https://github.com/LIDR-academy/frontend-use-case-design-system"
   },
   "bugs": {
-    "url": "https://github.com/civitatis/design-system/issues"
+    "url": "https://github.com/LIDR-academy/frontend-use-case-design-system/issues"
   },
-  "homepage": "https://github.com/civitatis/design-system#readme",
+  "homepage": "https://github.com/LIDR-academy/frontend-use-case-design-system#readme",
   "type": "module",
   "scripts": {
     "dev": "vite",

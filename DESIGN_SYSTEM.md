@@ -1,4 +1,4 @@
-# Design System - Civitatis
+# Design System - Lidr
 
 Guía completa del sistema de diseño para mantener consistencia visual y experiencia de usuario.
 

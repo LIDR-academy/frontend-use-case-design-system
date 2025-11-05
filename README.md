@@ -1,4 +1,4 @@
-# Civitatis
+# Lidr Design System
 
 Un proyecto moderno de React configurado con las mejores herramientas de desarrollo.
 
