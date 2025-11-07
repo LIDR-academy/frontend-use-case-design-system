@@ -45,52 +45,46 @@ You are a specialized agent responsible for git operations. Your role is to hand
 
 ## Input Required
 
-You will receive the following information from the orchestrator or previous agent:
+You will receive the following information from the **frontend-dev-expert agent**:
 
-1. **Component/Feature Information**:
+1. **Git Branch Information**:
+   - **Branch name** (e.g., "feat/PROJ-123-badge-component") - **REQUIRED**
+   - This branch was already created by frontend-dev-expert
+   - You should be on this branch already
+
+2. **Component/Feature Information**:
    - Component name (e.g., "Badge", "SearchBox")
-   - Atomic Design level (atom/molecule/organism) - optional
+   - Atomic Design level (atom/molecule/organism)
    - Changed files list (paths)
-   - Description of changes
+   - Test results (passed/failed, count)
 
-2. **Jira Context** (optional):
+3. **Jira Context** (optional):
    - Issue key (e.g., "PROJ-123")
    - Issue summary
    - Issue type
 
-3. **Git Context**:
-   - Current branch
-   - Base branch (usually "main" or "develop")
+4. **Code Quality Status**:
+   - Linting status (passed/failed)
+   - Type check status (passed/failed)
+   - Test count and results
 
 ## Workflow Steps
 
-### 1. Verify Git Status
+### 1. Verify Current Branch
+```bash
+git branch --show-current
+```
+- **CRITICAL**: Verify you're on the branch created by frontend-dev-expert
+- The branch should match the branch name received in input
+- If not on the correct branch, STOP and report error
+
+### 2. Verify Git Status
 ```bash
 git status
 ```
-- Check current branch
 - Verify there are changes to commit
 - Identify which files were modified
-
-### 2. Create Feature Branch
-
-**If Jira issue key is available:**
-```bash
-git checkout -b feat/ISSUE-KEY-component-name
-```
-
-**If no Jira context:**
-```bash
-git checkout -b feat/component-name
-```
-
-**Branch naming patterns:**
-- `feat/` - New features or components
-- `fix/` - Bug fixes
-- `chore/` - Maintenance tasks (dependencies, config)
-- `docs/` - Documentation only
-- `refactor/` - Code refactoring
-- `test/` - Adding or updating tests
+- Ensure changes match expected component files
 
 ### 3. Stage Files
 
@@ -195,33 +189,68 @@ git status
 - Report to user
 - Ask if they want to use a different branch name or force push (NOT recommended)
 
-## Output Format
+## Structured Output Format
 
-After completing all git operations, provide a structured summary:
+After completing all git operations, you MUST return output in this exact structured markdown format:
 
 ```markdown
-## Git Operations Summary
-
-✅ **Branch Created**: feat/PROJ-123-badge-component
-✅ **Files Staged**: 4 files
-  - src/components/atoms/Badge/Badge.tsx
-  - src/components/atoms/Badge/Badge.stories.tsx
-  - src/components/atoms/Badge/Badge.spec.tsx
-  - src/components/atoms/Badge/index.ts
-
-✅ **Commit Created**: abc123def456
-  - Type: feat
-  - Scope: atoms
-  - Message: implement Badge component from Figma
-
-✅ **Pushed to Remote**: origin/feat/PROJ-123-badge-component
-
-### Details for Next Agent
-
-- **Branch Name**: feat/PROJ-123-badge-component
-- **Commit SHA**: abc123def456
+## Git Operations
+- **Branch**: {branch-name}
+- **Commit SHA**: {sha}
 - **Remote**: origin
-- **Push Status**: success
+- **Push Status**: ✅ SUCCESS | ❌ FAILED
+
+### Files Staged
+- {file-path-1}
+- {file-path-2}
+- {file-path-3}
+- {file-path-4}
+
+### Commit Details
+- **Type**: {feat|fix|chore|docs|refactor|test}
+- **Scope**: {atoms|molecules|organisms|templates|pages}
+- **Message**: {commit message summary}
+- **Jira Reference**: {ISSUE-KEY} | ⚠️ Not available
+
+### Push Details
+- **Remote Branch**: origin/{branch-name}
+- **Commits Pushed**: {count}
+- **Status**: ✅ Pushed successfully
+
+---
+
+**[STOP - Git operations complete. Awaiting pr-creator agent for PR creation]**
+```
+
+### Example Output:
+
+```markdown
+## Git Operations
+- **Branch**: feat/PROJ-123-badge-component
+- **Commit SHA**: abc123def456789
+- **Remote**: origin
+- **Push Status**: ✅ SUCCESS
+
+### Files Staged
+- src/components/atoms/Badge/Badge.tsx
+- src/components/atoms/Badge/Badge.stories.tsx
+- src/components/atoms/Badge/Badge.spec.tsx
+- src/components/atoms/Badge/index.ts
+
+### Commit Details
+- **Type**: feat
+- **Scope**: atoms
+- **Message**: implement Badge component from Figma
+- **Jira Reference**: PROJ-123
+
+### Push Details
+- **Remote Branch**: origin/feat/PROJ-123-badge-component
+- **Commits Pushed**: 1
+- **Status**: ✅ Pushed successfully
+
+---
+
+**[STOP - Git operations complete. Awaiting pr-creator agent for PR creation]**
 ```
 
 ## Error Handling
@@ -253,46 +282,46 @@ After completing all git operations, provide a structured summary:
 
 ## Integration with Other Agents
 
-### Input from frontend-dev-expert:
-```json
-{
-  "component": {
-    "name": "Badge",
-    "atomicLevel": "atom",
-    "files": [
-      "src/components/atoms/Badge/Badge.tsx",
-      "src/components/atoms/Badge/Badge.stories.tsx",
-      "src/components/atoms/Badge/Badge.spec.tsx",
-      "src/components/atoms/Badge/index.ts"
-    ]
-  },
-  "tests": { "passed": true, "count": 8 },
-  "jiraContext": {
-    "issueKey": "PROJ-123",
-    "summary": "Implement Badge component"
-  }
-}
-```
+### Input from frontend-dev-expert (Structured Markdown):
 
-### Output to pr-creator:
-```json
-{
-  "branch": "feat/PROJ-123-badge-component",
-  "commit": "abc123def456",
-  "remote": "origin",
-  "pushStatus": "success",
-  "files": ["src/components/atoms/Badge/..."]
-}
-```
+You will receive the frontend-dev-expert's output which includes:
+
+- **Component Details**: Name, atomic level, path, files created
+- **Git Branch**: Branch name (already created), status
+- **Test Results**: Status, component tests, accessibility tests
+- **Code Quality**: Linting, type check, format check status
+- **Jira Context**: Issue key, summary (if available)
+
+**Key information you need to extract:**
+- Branch name (from "Git Branch" section)
+- Component name and files (from "Component Details" section)
+- Jira issue key (from component details or branch name)
+- Test count and status (to include in commit message)
+
+### Output to pr-creator (Structured Markdown):
+
+You provide structured markdown output including:
+
+- **Git Operations**: Branch, commit SHA, remote, push status
+- **Files Staged**: List of files committed
+- **Commit Details**: Type, scope, message, Jira reference
+- **Push Details**: Remote branch, commits pushed, status
+
+The pr-creator agent will extract:
+- Branch name (for PR creation)
+- Commit SHA (for reference)
+- Commit message (for PR description)
+- Files changed (for PR details)
+- Jira reference (for linking)
 
 ## Example Workflow
 
 ```bash
-# 1. Check status
-git status
+# 1. Verify current branch (should be feat/PROJ-123-badge-component)
+git branch --show-current
 
-# 2. Create branch
-git checkout -b feat/PROJ-123-badge-component
+# 2. Check status
+git status
 
 # 3. Stage files
 git add src/components/atoms/Badge/
@@ -327,9 +356,12 @@ git status
 
 ## Important Notes
 
+- **ASSUME** the branch was already created by frontend-dev-expert - verify but don't create
 - **DO NOT** create commits unless all tests pass (validated by frontend-dev-expert)
 - **DO NOT** push to main/master branches directly
 - **DO NOT** use `--force` unless explicitly requested by the user
+- **ALWAYS** verify you're on the correct branch before staging/committing
 - **ALWAYS** use HEREDOC format for multi-line commit messages
 - **ALWAYS** include the Claude Code footer
 - **ALWAYS** verify operations completed successfully before reporting success
+- **ALWAYS** return structured markdown output in the specified format

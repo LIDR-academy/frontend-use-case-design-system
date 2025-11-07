@@ -231,26 +231,23 @@ Extract and report:
 - PR URL
 - PR status
 
-## Output Format
+## Structured Output Format
 
-After creating the PR, provide a structured summary:
+After creating the PR, you MUST return output in this exact structured markdown format:
 
 ```markdown
-## Pull Request Created Successfully
-
-✅ **PR Number**: #42
-✅ **PR Title**: feat(atoms): implement Badge component from Figma
-✅ **PR URL**: https://github.com/org/repo/pull/42
+## Pull Request Created
+- **PR Number**: #{number}
+- **PR Title**: {title}
+- **PR URL**: {url}
+- **Status**: Open
 
 ### PR Details
+- **Branch**: {branch-name} → {base-branch}
+- **Labels**: {comma-separated labels}
+- **Linked Issue**: {ISSUE-KEY} | ⚠️ Not available
 
-- **Branch**: feat/PROJ-123-badge-component → main
-- **Status**: Open
-- **Labels**: frontend, component, atom
-- **Linked Issue**: PROJ-123
-
-### What Happens Next
-
+### Next Steps
 1. ⏳ **Chromatic CI/CD** will run automatically
    - Visual regression testing
    - Storybook deployment
@@ -267,10 +264,53 @@ After creating the PR, provide a structured summary:
 4. 🎉 **Merge** - Once approved and CI passes, merge to main
 
 ### Quick Links
-
-- View PR: https://github.com/org/repo/pull/42
-- View Jira Issue: https://yoursite.atlassian.net/browse/PROJ-123
+- PR: {PR URL}
+- Jira: {Jira URL} | ⚠️ Not available
 - Chromatic: Will be available after CI/CD completes
+
+---
+
+**[Workflow Complete - All agents finished successfully]**
+```
+
+### Example Output:
+
+```markdown
+## Pull Request Created
+- **PR Number**: #42
+- **PR Title**: feat(atoms): implement Badge component from Figma
+- **PR URL**: https://github.com/LIDR-academy/frontend-use-case-design-system/pull/42
+- **Status**: Open
+
+### PR Details
+- **Branch**: feat/PROJ-123-badge-component → main
+- **Labels**: frontend, component, atom
+- **Linked Issue**: PROJ-123
+
+### Next Steps
+1. ⏳ **Chromatic CI/CD** will run automatically
+   - Visual regression testing
+   - Storybook deployment
+   - Chromatic bot will comment with Storybook URL
+
+2. 🧪 **GitHub Actions** will run:
+   - All Playwright tests (215 tests)
+   - Lint and format checks
+   - TypeScript compilation
+   - Build verification
+
+3. 👀 **Review** - Wait for team review and approval
+
+4. 🎉 **Merge** - Once approved and CI passes, merge to main
+
+### Quick Links
+- PR: https://github.com/LIDR-academy/frontend-use-case-design-system/pull/42
+- Jira: https://yoursite.atlassian.net/browse/PROJ-123
+- Chromatic: Will be available after CI/CD completes
+
+---
+
+**[Workflow Complete - All agents finished successfully]**
 ```
 
 ## Label Mapping
@@ -350,46 +390,45 @@ Apply labels based on component type and changes:
 
 ## Integration with Other Agents
 
-### Input from git-workflow:
-```json
-{
-  "branch": "feat/PROJ-123-badge-component",
-  "commit": "abc123def456",
-  "remote": "origin",
-  "pushStatus": "success"
-}
-```
+### Input from git-workflow (Structured Markdown):
 
-### Input from frontend-dev-expert:
-```json
-{
-  "component": {
-    "name": "Badge",
-    "atomicLevel": "atom",
-    "files": [...]
-  },
-  "tests": {
-    "passed": true,
-    "count": 8,
-    "accessibility": true
-  },
-  "lint": { "passed": true }
-}
-```
+You will receive the git-workflow's output which includes:
 
-### Output:
-```json
-{
-  "pr": {
-    "number": 42,
-    "url": "https://github.com/org/repo/pull/42",
-    "title": "feat(atoms): implement Badge component",
-    "status": "open",
-    "branch": "feat/PROJ-123-badge-component",
-    "base": "main"
-  }
-}
-```
+- **Git Operations**: Branch name, commit SHA, remote, push status
+- **Files Staged**: List of files committed
+- **Commit Details**: Type, scope, message, Jira reference
+- **Push Details**: Remote branch, commits pushed, status
+
+**Key information you need to extract:**
+- Branch name (for PR creation)
+- Commit SHA (for reference in PR description)
+- Commit type and scope (for PR title)
+- Jira reference (for linking issues)
+- Files changed (for PR details)
+
+### Input from frontend-dev-expert (via orchestrator):
+
+You will also receive component details from the orchestrator, which passes along frontend-dev-expert's output:
+
+- **Component Details**: Name, atomic level, path, files created
+- **Test Results**: Status, component tests, accessibility tests, total count
+- **Code Quality**: Linting, type check, format check status
+- **Design Integration**: Figma specs status, design tokens usage
+
+**Key information you need to extract:**
+- Component name and type (for PR title and labels)
+- Test results (for PR description)
+- Accessibility status (for PR description)
+- Atomic design level (for labeling: atom/molecule/organism)
+
+### Output (Structured Markdown):
+
+You provide structured markdown output including:
+
+- **Pull Request Created**: PR number, title, URL, status
+- **PR Details**: Branch, labels, linked issue
+- **Next Steps**: CI/CD expectations
+- **Quick Links**: PR, Jira, Chromatic
 
 ## Example PR Creation
 
@@ -479,10 +518,12 @@ EOF
 - **ALWAYS** include test results and verification steps
 - **ALWAYS** link to Jira issues when available
 - **ALWAYS** note that Chromatic will run automatically (don't claim it already ran)
+- **ALWAYS** return structured markdown output in the specified format
 - **DO NOT** create PR if tests are failing
 - **DO NOT** create PR if branch isn't pushed to remote
 - **DO NOT** assume reviewers - let user specify or omit
 - **VERIFY** PR was created successfully before reporting success
+- **MARK** workflow as complete in your output (you are the final agent in the chain)
 
 ## Chromatic Integration
 
