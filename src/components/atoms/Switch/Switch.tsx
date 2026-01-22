@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useId } from 'react';
 
 export interface SwitchProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
@@ -24,7 +24,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     },
     ref
   ) => {
-    const switchId = id || `switch-${Math.random().toString(36).substr(2, 9)}`;
+    const generatedId = useId();
+    const switchId = id || generatedId;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled) return;
@@ -118,6 +119,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           checked={checked}
           onChange={handleChange}
           disabled={disabled}
+          tabIndex={-1}
           className="sr-only"
           aria-hidden="true"
           {...props}
