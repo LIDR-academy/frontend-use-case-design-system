@@ -10,7 +10,7 @@ const meta: Meta<typeof Tag> = {
     docs: {
       description: {
         component:
-          'Componente Tag para mostrar etiquetas con iconos, diferentes colores, tamaños y tipos.',
+          'Tag component following Figma design system specifications. A molecule component that combines icons and text to display labels with consistent styling and accessibility.',
       },
     },
     a11y: {
@@ -25,36 +25,40 @@ const meta: Meta<typeof Tag> = {
     },
   },
   argTypes: {
-    text: {
+    variant: {
+      control: { type: 'select' },
+      options: [
+        'positive-green',
+        'positive-blue',
+        'positive-yellow',
+        'positive-gray',
+        'positive-orange',
+        'positive-pink',
+        'positive-purple',
+        'negative-green',
+        'negative-blue',
+        'negative-yellow',
+        'negative-gray',
+        'negative-orange',
+        'negative-pink',
+        'negative-purple',
+      ],
+      description: 'Visual style variant following Figma design tokens',
+    },
+    showStartIcon: {
+      control: { type: 'boolean' },
+      description: 'Whether to show the start icon (arrow)',
+    },
+    showEndIcon: {
+      control: { type: 'boolean' },
+      description: 'Whether to show the end icon (close/x)',
+    },
+    children: {
       control: { type: 'text' },
-      description: 'Texto a mostrar en el tag',
+      description: 'Text content of the tag',
     },
-    color: {
-      control: { type: 'select' },
-      options: ['yellow', 'gray', 'blue', 'green', 'orange', 'pink', 'purple'],
-      description: 'Color del tag',
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['s', 'm', 'l'],
-      description: 'Tamaño del tag',
-    },
-    type: {
-      control: { type: 'select' },
-      options: ['positive', 'negative'],
-      description: 'Tipo de tag (positivo o negativo)',
-    },
-    startIcon: {
-      control: { type: 'boolean' },
-      description: 'Mostrar icono al inicio (arrow-left)',
-    },
-    endIcon: {
-      control: { type: 'boolean' },
-      description: 'Mostrar icono al final (x)',
-    },
-    showText: {
-      control: { type: 'boolean' },
-      description: 'Mostrar texto',
+    onRemove: {
+      description: 'Handler called when end icon (close) is clicked',
     },
   },
   tags: ['autodocs'],
@@ -63,30 +67,36 @@ const meta: Meta<typeof Tag> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Stories básicas
+// Default story - Positive Green (Figma design)
 export const Default: Story = {
   args: {
-    text: 'Tag',
+    children: 'Tag',
+    variant: 'positive-green',
+    showStartIcon: true,
+    showEndIcon: true,
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag por defecto con configuración estándar',
+        story:
+          'Default Tag following Figma design specifications with positive-green variant',
       },
     },
   },
 };
 
+// Icon variations
 export const WithoutIcons: Story = {
   args: {
-    text: 'Sin iconos',
-    startIcon: false,
-    endIcon: false,
+    children: 'No Icons',
+    variant: 'positive-blue',
+    showStartIcon: false,
+    showEndIcon: false,
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag sin iconos, solo texto',
+        story: 'Tag without any icons, displaying only text',
       },
     },
   },
@@ -94,14 +104,15 @@ export const WithoutIcons: Story = {
 
 export const OnlyStartIcon: Story = {
   args: {
-    text: 'Con inicio',
-    startIcon: true,
-    endIcon: false,
+    children: 'Start Only',
+    variant: 'positive-green',
+    showStartIcon: true,
+    showEndIcon: false,
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag solo con icono de inicio (arrow-left)',
+        story: 'Tag with only the start icon (arrow)',
       },
     },
   },
@@ -109,165 +120,268 @@ export const OnlyStartIcon: Story = {
 
 export const OnlyEndIcon: Story = {
   args: {
-    text: 'Con final',
-    startIcon: false,
-    endIcon: true,
+    children: 'End Only',
+    variant: 'positive-blue',
+    showStartIcon: false,
+    showEndIcon: true,
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag solo con icono final (x)',
+        story: 'Tag with only the end icon (close/remove)',
       },
     },
   },
 };
 
-// Tamaños
-export const Small: Story = {
+// Positive variants
+export const PositiveGreen: Story = {
   args: {
-    text: 'Pequeño',
-    size: 's',
+    children: 'Positive Green',
+    variant: 'positive-green',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag tamaño pequeño',
+        story:
+          'Positive green variant matching Figma design tokens (#dafaeb bg, #075e45 text)',
       },
     },
   },
 };
 
-export const Medium: Story = {
+export const PositiveBlue: Story = {
   args: {
-    text: 'Mediano',
-    size: 'm',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tag tamaño mediano (por defecto)',
-      },
-    },
+    children: 'Positive Blue',
+    variant: 'positive-blue',
   },
 };
 
-export const Large: Story = {
+export const PositiveYellow: Story = {
   args: {
-    text: 'Grande',
-    size: 'l',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tag tamaño grande',
-      },
-    },
+    children: 'Positive Yellow',
+    variant: 'positive-yellow',
   },
 };
 
-// Tipos
-export const Positive: Story = {
+export const PositiveGray: Story = {
   args: {
-    text: 'Positivo',
-    type: 'positive',
-    color: 'green',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tag tipo positivo con fondo claro',
-      },
-    },
+    children: 'Positive Gray',
+    variant: 'positive-gray',
   },
 };
 
-export const Negative: Story = {
+export const PositiveOrange: Story = {
   args: {
-    text: 'Negativo',
-    type: 'negative',
-    color: 'blue',
+    children: 'Positive Orange',
+    variant: 'positive-orange',
+  },
+};
+
+export const PositivePink: Story = {
+  args: {
+    children: 'Positive Pink',
+    variant: 'positive-pink',
+  },
+};
+
+export const PositivePurple: Story = {
+  args: {
+    children: 'Positive Purple',
+    variant: 'positive-purple',
+  },
+};
+
+// Negative variants
+export const NegativeGreen: Story = {
+  args: {
+    children: 'Negative Green',
+    variant: 'negative-green',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tag tipo negativo con fondo oscuro',
+        story: 'Negative green variant with dark background',
       },
     },
   },
 };
 
-// Colores positivos
-export const PositiveColors: Story = {
+export const NegativeBlue: Story = {
+  args: {
+    children: 'Negative Blue',
+    variant: 'negative-blue',
+  },
+};
+
+export const NegativeYellow: Story = {
+  args: {
+    children: 'Negative Yellow',
+    variant: 'negative-yellow',
+  },
+};
+
+export const NegativeGray: Story = {
+  args: {
+    children: 'Negative Gray',
+    variant: 'negative-gray',
+  },
+};
+
+export const NegativeOrange: Story = {
+  args: {
+    children: 'Negative Orange',
+    variant: 'negative-orange',
+  },
+};
+
+export const NegativePink: Story = {
+  args: {
+    children: 'Negative Pink',
+    variant: 'negative-pink',
+  },
+};
+
+export const NegativePurple: Story = {
+  args: {
+    children: 'Negative Purple',
+    variant: 'negative-purple',
+  },
+};
+
+// Interactive examples
+export const WithRemoveHandler: Story = {
+  args: {
+    children: 'Click X to Remove',
+    variant: 'positive-green',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Tag with onRemove handler. Click the X icon to trigger the remove action.',
+      },
+    },
+  },
+};
+
+// Showcase stories
+export const AllPositiveVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Tag text="Yellow" color="yellow" type="positive" />
-      <Tag text="Gray" color="gray" type="positive" />
-      <Tag text="Blue" color="blue" type="positive" />
-      <Tag text="Green" color="green" type="positive" />
-      <Tag text="Orange" color="orange" type="positive" />
-      <Tag text="Pink" color="pink" type="positive" />
-      <Tag text="Purple" color="purple" type="positive" />
+      <Tag variant="positive-green">Green</Tag>
+      <Tag variant="positive-blue">Blue</Tag>
+      <Tag variant="positive-yellow">Yellow</Tag>
+      <Tag variant="positive-gray">Gray</Tag>
+      <Tag variant="positive-orange">Orange</Tag>
+      <Tag variant="positive-pink">Pink</Tag>
+      <Tag variant="positive-purple">Purple</Tag>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Showcase de todos los colores disponibles en tipo positivo',
+        story: 'Showcase of all positive variant colors',
       },
     },
   },
 };
 
-// Colores negativos
-export const NegativeColors: Story = {
+export const AllNegativeVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Tag text="Yellow" color="yellow" type="negative" />
-      <Tag text="Gray" color="gray" type="negative" />
-      <Tag text="Blue" color="blue" type="negative" />
-      <Tag text="Green" color="green" type="negative" />
-      <Tag text="Orange" color="orange" type="negative" />
-      <Tag text="Pink" color="pink" type="negative" />
-      <Tag text="Purple" color="purple" type="negative" />
+      <Tag variant="negative-green">Green</Tag>
+      <Tag variant="negative-blue">Blue</Tag>
+      <Tag variant="negative-yellow">Yellow</Tag>
+      <Tag variant="negative-gray">Gray</Tag>
+      <Tag variant="negative-orange">Orange</Tag>
+      <Tag variant="negative-pink">Pink</Tag>
+      <Tag variant="negative-purple">Purple</Tag>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Showcase de todos los colores disponibles en tipo negativo',
+        story: 'Showcase of all negative variant colors',
       },
     },
   },
 };
 
-// Showcase completo
+export const IconVariations: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Tag variant="positive-green" showStartIcon showEndIcon>
+        Both Icons
+      </Tag>
+      <Tag variant="positive-blue" showStartIcon showEndIcon={false}>
+        Start Only
+      </Tag>
+      <Tag variant="positive-yellow" showStartIcon={false} showEndIcon>
+        End Only
+      </Tag>
+      <Tag variant="positive-purple" showStartIcon={false} showEndIcon={false}>
+        No Icons
+      </Tag>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Showcase of all icon configuration variations',
+      },
+    },
+  },
+};
+
 export const TagShowcase: Story = {
   render: () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold mb-3">Tamaños</h3>
-        <div className="flex items-center gap-4">
-          <Tag text="Small" size="s" color="blue" />
-          <Tag text="Medium" size="m" color="green" />
-          <Tag text="Large" size="l" color="purple" />
+        <h3 className="text-lg font-semibold mb-3">Positive Variants</h3>
+        <div className="flex flex-wrap gap-2">
+          <Tag variant="positive-green">Green</Tag>
+          <Tag variant="positive-blue">Blue</Tag>
+          <Tag variant="positive-yellow">Yellow</Tag>
+          <Tag variant="positive-gray">Gray</Tag>
+          <Tag variant="positive-orange">Orange</Tag>
+          <Tag variant="positive-pink">Pink</Tag>
+          <Tag variant="positive-purple">Purple</Tag>
         </div>
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-3">Variaciones de iconos</h3>
+        <h3 className="text-lg font-semibold mb-3">Negative Variants</h3>
         <div className="flex flex-wrap gap-2">
-          <Tag text="Ambos iconos" startIcon endIcon />
-          <Tag text="Solo inicio" startIcon endIcon={false} />
-          <Tag text="Solo final" startIcon={false} endIcon />
-          <Tag text="Sin iconos" startIcon={false} endIcon={false} />
+          <Tag variant="negative-green">Green</Tag>
+          <Tag variant="negative-blue">Blue</Tag>
+          <Tag variant="negative-yellow">Yellow</Tag>
+          <Tag variant="negative-gray">Gray</Tag>
+          <Tag variant="negative-orange">Orange</Tag>
+          <Tag variant="negative-pink">Pink</Tag>
+          <Tag variant="negative-purple">Purple</Tag>
         </div>
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-3">Tipos</h3>
+        <h3 className="text-lg font-semibold mb-3">Icon Configurations</h3>
         <div className="flex flex-wrap gap-2">
-          <Tag text="Positivo" type="positive" color="green" />
-          <Tag text="Negativo" type="negative" color="blue" />
+          <Tag variant="positive-green" showStartIcon showEndIcon>
+            Both Icons
+          </Tag>
+          <Tag variant="positive-blue" showStartIcon showEndIcon={false}>
+            Start Only
+          </Tag>
+          <Tag variant="positive-yellow" showStartIcon={false} showEndIcon>
+            End Only
+          </Tag>
+          <Tag
+            variant="positive-purple"
+            showStartIcon={false}
+            showEndIcon={false}
+          >
+            No Icons
+          </Tag>
         </div>
       </div>
     </div>
@@ -275,7 +389,8 @@ export const TagShowcase: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Showcase completo del componente Tag con todas sus variaciones',
+        story:
+          'Complete showcase of the Tag component with all variants and configurations',
       },
     },
   },

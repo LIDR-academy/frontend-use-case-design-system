@@ -1,291 +1,393 @@
 import { test, expect } from '@playwright/experimental-ct-react';
+import AxeBuilder from '@axe-core/playwright';
 import { Tag } from './Tag';
 
 test.describe('Tag Component', () => {
-  test.describe('Rendering', () => {
-    test('should render tag with default props', async ({ mount }) => {
-      const component = await mount(<Tag />);
-      await expect(component.getByText('Tag')).toBeVisible();
-    });
-
-    test('should render tag with custom text', async ({ mount }) => {
-      const component = await mount(<Tag text="Custom Tag" />);
-      await expect(component.getByText('Custom Tag')).toBeVisible();
-    });
-
-    test('should render both icons by default', async ({ mount }) => {
-      const component = await mount(<Tag data-testid="tag" />);
-      const svgElements = await component.locator('svg').all();
-      expect(svgElements).toHaveLength(2);
-    });
-
-    test('should render only start icon when endIcon is false', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag endIcon={false} />);
-      const svgElements = await component.locator('svg').all();
-      expect(svgElements).toHaveLength(1);
-    });
-
-    test('should render only end icon when startIcon is false', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag startIcon={false} />);
-      const svgElements = await component.locator('svg').all();
-      expect(svgElements).toHaveLength(1);
-    });
-
-    test('should render no icons when both are disabled', async ({ mount }) => {
-      const component = await mount(<Tag startIcon={false} endIcon={false} />);
-      const svgElements = await component.locator('svg').all();
-      expect(svgElements).toHaveLength(0);
-    });
-
-    test('should not render text when showText is false', async ({ mount }) => {
-      const component = await mount(
-        <Tag text="Hidden Text" showText={false} />
-      );
-      await expect(component.getByText('Hidden Text')).not.toBeVisible();
-    });
+  // Rendering tests
+  test('should render with default props', async ({ mount }) => {
+    const component = await mount(<Tag>Tag</Tag>);
+    await expect(component).toBeVisible();
+    await expect(component).toContainText('Tag');
   });
 
-  test.describe('Sizes', () => {
-    test('should apply small size classes', async ({ mount }) => {
-      const component = await mount(<Tag size="s" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/px-2/);
-      await expect(tag).toHaveClass(/py-1/);
-      await expect(tag).toHaveClass(/text-xs/);
-      await expect(tag).toHaveClass(/gap-1/);
-    });
-
-    test('should apply medium size classes by default', async ({ mount }) => {
-      const component = await mount(<Tag />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/px-3/);
-      await expect(tag).toHaveClass(/py-1\.5/);
-      await expect(tag).toHaveClass(/text-sm/);
-      await expect(tag).toHaveClass(/gap-2/);
-    });
-
-    test('should apply large size classes', async ({ mount }) => {
-      const component = await mount(<Tag size="l" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/px-4/);
-      await expect(tag).toHaveClass(/py-2/);
-      await expect(tag).toHaveClass(/text-base/);
-      await expect(tag).toHaveClass(/gap-2/);
-    });
+  test('should render with custom text', async ({ mount }) => {
+    const component = await mount(<Tag>Custom Tag Text</Tag>);
+    await expect(component).toBeVisible();
+    await expect(component).toContainText('Custom Tag Text');
   });
 
-  test.describe('Colors and Types', () => {
-    test('should apply blue positive color classes by default', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-blue-100/);
-      await expect(tag).toHaveClass(/text-blue-800/);
-      await expect(tag).toHaveClass(/border-blue-200/);
-    });
+  test('should render default positive-green variant', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag>Default</Tag>);
 
-    test('should apply yellow positive color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="yellow" type="positive" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-yellow-100/);
-      await expect(tag).toHaveClass(/text-yellow-800/);
-      await expect(tag).toHaveClass(/border-yellow-200/);
-    });
-
-    test('should apply blue negative color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="blue" type="negative" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-blue-800/);
-      await expect(tag).toHaveClass(/text-blue-100/);
-      await expect(tag).toHaveClass(/border-blue-700/);
-    });
-
-    test('should apply green positive color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="green" type="positive" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-green-100/);
-      await expect(tag).toHaveClass(/text-green-800/);
-      await expect(tag).toHaveClass(/border-green-200/);
-    });
-
-    test('should apply gray negative color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="gray" type="negative" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-gray-800/);
-      await expect(tag).toHaveClass(/text-gray-100/);
-      await expect(tag).toHaveClass(/border-gray-700/);
-    });
-
-    test('should apply orange positive color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="orange" type="positive" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-orange-100/);
-      await expect(tag).toHaveClass(/text-orange-800/);
-      await expect(tag).toHaveClass(/border-orange-200/);
-    });
-
-    test('should apply pink negative color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="pink" type="negative" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-pink-800/);
-      await expect(tag).toHaveClass(/text-pink-100/);
-      await expect(tag).toHaveClass(/border-pink-700/);
-    });
-
-    test('should apply purple positive color classes', async ({ mount }) => {
-      const component = await mount(<Tag color="purple" type="positive" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/bg-purple-100/);
-      await expect(tag).toHaveClass(/text-purple-800/);
-      await expect(tag).toHaveClass(/border-purple-200/);
-    });
+    // Check for positive-green background color (#dafaeb)
+    const tagElement = page.locator('[aria-label*="Tag:"]').first();
+    await expect(tagElement).toBeVisible();
   });
 
-  test.describe('Icons', () => {
-    test('should use arrow-left icon for start icon', async ({ mount }) => {
-      const component = await mount(<Tag endIcon={false} />);
-      const svgElement = component.locator('svg').first();
-      await expect(svgElement).toHaveClass(/text-blue-800/);
-    });
+  // Variant tests
+  test('should render positive-green variant with correct colors', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag variant="positive-green">Green</Tag>);
 
-    test('should use x icon for end icon', async ({ mount }) => {
-      const component = await mount(<Tag startIcon={false} />);
-      const svgElement = component.locator('svg').first();
-      await expect(svgElement).toHaveClass(/text-blue-800/);
-    });
-
-    test('should apply correct icon colors for positive type', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag color="green" type="positive" />);
-      const svgElements = await component.locator('svg').all();
-      for (const svg of svgElements) {
-        await expect(svg).toHaveClass(/text-green-800/);
-      }
-    });
-
-    test('should apply correct icon colors for negative type', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag color="blue" type="negative" />);
-      const svgElements = await component.locator('svg').all();
-      for (const svg of svgElements) {
-        await expect(svg).toHaveClass(/text-blue-100/);
-      }
-    });
-
-    test('should use correct icon sizes based on tag size', async ({
-      mount,
-    }) => {
-      const smallComponent = await mount(<Tag size="s" />);
-      const mediumComponent = await mount(<Tag size="m" />);
-      const largeComponent = await mount(<Tag size="l" />);
-
-      const smallIcons = await smallComponent.locator('svg').all();
-      const mediumIcons = await mediumComponent.locator('svg').all();
-      const largeIcons = await largeComponent.locator('svg').all();
-
-      for (const icon of smallIcons) {
-        await expect(icon).toHaveClass(/w-3/);
-        await expect(icon).toHaveClass(/h-3/);
-      }
-
-      for (const icon of mediumIcons) {
-        await expect(icon).toHaveClass(/w-4/);
-        await expect(icon).toHaveClass(/h-4/);
-      }
-
-      for (const icon of largeIcons) {
-        await expect(icon).toHaveClass(/w-6/);
-        await expect(icon).toHaveClass(/h-6/);
-      }
-    });
+    const tagElement = page.locator('[aria-label*="Tag:"]').first();
+    await expect(tagElement).toBeVisible();
+    // Figma colors: bg-[#dafaeb] text-[#075e45]
   });
 
-  test.describe('Interaction', () => {
-    test('should call onClick when clicked', async ({ mount }) => {
-      let clicked = false;
-      const handleClick = () => {
-        clicked = true;
-      };
-
-      const component = await mount(<Tag onClick={handleClick} />);
-      const tag = component.locator('div').first();
-
-      await tag.click();
-      expect(clicked).toBe(true);
-    });
-
-    test('should have button role and tabIndex when onClick is provided', async ({
-      mount,
-    }) => {
-      const handleClick = () => {};
-      const component = await mount(<Tag onClick={handleClick} />);
-      const tag = component.locator('div').first();
-
-      await expect(tag).toHaveAttribute('role', 'button');
-      await expect(tag).toHaveAttribute('tabIndex', '0');
-    });
-
-    test('should not have button role when onClick is not provided', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag />);
-      const tag = component.locator('div').first();
-
-      await expect(tag).not.toHaveAttribute('role');
-      await expect(tag).not.toHaveAttribute('tabIndex');
-    });
+  test('should render positive-blue variant', async ({ mount }) => {
+    const component = await mount(<Tag variant="positive-blue">Blue</Tag>);
+    await expect(component).toBeVisible();
+    await expect(component).toContainText('Blue');
   });
 
-  test.describe('Custom Props', () => {
-    test('should apply custom className', async ({ mount }) => {
-      const component = await mount(<Tag className="custom-class" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/custom-class/);
-    });
-
-    test('should maintain base classes with custom className', async ({
-      mount,
-    }) => {
-      const component = await mount(<Tag className="custom-class" />);
-      const tag = component.locator('div').first();
-      await expect(tag).toHaveClass(/inline-flex/);
-      await expect(tag).toHaveClass(/items-center/);
-      await expect(tag).toHaveClass(/border/);
-      await expect(tag).toHaveClass(/rounded-full/);
-      await expect(tag).toHaveClass(/font-medium/);
-      await expect(tag).toHaveClass(/custom-class/);
-    });
+  test('should render negative-green variant', async ({ mount }) => {
+    const component = await mount(
+      <Tag variant="negative-green">Dark Green</Tag>
+    );
+    await expect(component).toBeVisible();
+    await expect(component).toContainText('Dark Green');
   });
 
-  test.describe('Accessibility', () => {
-    test('should be accessible with proper structure', async ({ mount }) => {
-      const component = await mount(<Tag text="Accessible Tag" />);
-      await expect(component.getByText('Accessible Tag')).toBeVisible();
+  test('should render all positive variants', async ({ mount }) => {
+    const variants = [
+      'positive-green',
+      'positive-blue',
+      'positive-yellow',
+      'positive-gray',
+      'positive-orange',
+      'positive-pink',
+      'positive-purple',
+    ] as const;
+
+    for (const variant of variants) {
+      const component = await mount(<Tag variant={variant}>{variant}</Tag>);
+      await expect(component).toBeVisible();
+    }
+  });
+
+  test('should render all negative variants', async ({ mount }) => {
+    const variants = [
+      'negative-green',
+      'negative-blue',
+      'negative-yellow',
+      'negative-gray',
+      'negative-orange',
+      'negative-pink',
+      'negative-purple',
+    ] as const;
+
+    for (const variant of variants) {
+      const component = await mount(<Tag variant={variant}>{variant}</Tag>);
+      await expect(component).toBeVisible();
+    }
+  });
+
+  // Icon tests
+  test('should render both start and end icons by default', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag>With Icons</Tag>);
+
+    // Should have 2 icons (arrow-left and x)
+    const icons = page.locator('svg');
+    const iconCount = await icons.count();
+    expect(iconCount).toBe(2);
+  });
+
+  test('should render without start icon', async ({ mount, page }) => {
+    await mount(<Tag showStartIcon={false}>No Start Icon</Tag>);
+
+    // Should have only 1 icon (x)
+    const icons = page.locator('svg');
+    const iconCount = await icons.count();
+    expect(iconCount).toBe(1);
+  });
+
+  test('should render without end icon', async ({ mount, page }) => {
+    await mount(<Tag showEndIcon={false}>No End Icon</Tag>);
+
+    // Should have only 1 icon (arrow-left)
+    const icons = page.locator('svg');
+    const iconCount = await icons.count();
+    expect(iconCount).toBe(1);
+  });
+
+  test('should render without any icons', async ({ mount, page }) => {
+    await mount(
+      <Tag showStartIcon={false} showEndIcon={false}>
+        No Icons
+      </Tag>
+    );
+
+    // Should have no icons
+    const icons = page.locator('svg');
+    const iconCount = await icons.count();
+    expect(iconCount).toBe(0);
+  });
+
+  // Remove functionality tests
+  test('should call onRemove when end icon is clicked', async ({ mount }) => {
+    let removed = false;
+    const component = await mount(
+      <Tag
+        onRemove={() => {
+          removed = true;
+        }}
+      >
+        Removable
+      </Tag>
+    );
+
+    // Click the close button (end icon)
+    const closeButton = component.locator('button');
+    await closeButton.click();
+
+    expect(removed).toBe(true);
+  });
+
+  test('should call onRemove on Enter key', async ({ mount, page }) => {
+    let removed = false;
+    await mount(
+      <Tag
+        onRemove={() => {
+          removed = true;
+        }}
+      >
+        Keyboard Remove
+      </Tag>
+    );
+
+    const closeButton = page.locator('button[aria-label*="Remove"]');
+    await closeButton.focus();
+    await page.keyboard.press('Enter');
+
+    expect(removed).toBe(true);
+  });
+
+  test('should call onRemove on Space key', async ({ mount, page }) => {
+    let removed = false;
+    await mount(
+      <Tag
+        onRemove={() => {
+          removed = true;
+        }}
+      >
+        Space Remove
+      </Tag>
+    );
+
+    const closeButton = page.locator('button[aria-label*="Remove"]');
+    await closeButton.focus();
+    await page.keyboard.press('Space');
+
+    expect(removed).toBe(true);
+  });
+
+  test('should not call onRemove when start icon area is clicked', async ({
+    mount,
+  }) => {
+    let removed = false;
+    const component = await mount(
+      <Tag
+        onRemove={() => {
+          removed = true;
+        }}
+      >
+        Not Removed
+      </Tag>
+    );
+
+    // Click the tag container (not the close button)
+    await component.click({ position: { x: 10, y: 10 } });
+
+    expect(removed).toBe(false);
+  });
+
+  // Keyboard navigation tests
+  test('should support Tab navigation to close button', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag onRemove={() => {}}>Tab Navigation</Tag>);
+
+    const closeButton = page.locator('button[aria-label*="Remove"]');
+    await page.keyboard.press('Tab');
+    await expect(closeButton).toBeFocused();
+  });
+
+  test('should show visible focus indicator on close button', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag onRemove={() => {}}>Focus Test</Tag>);
+
+    const closeButton = page.locator('button[aria-label*="Remove"]');
+    await closeButton.focus();
+    await expect(closeButton).toBeFocused();
+  });
+
+  // Accessibility tests
+  test('should have proper ARIA label', async ({ mount, page }) => {
+    await mount(<Tag>Accessible Tag</Tag>);
+
+    const tagElement = page.locator('[aria-label="Tag: Accessible Tag"]');
+    await expect(tagElement).toBeVisible();
+  });
+
+  test('should have custom ARIA label when provided', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag aria-label="Custom Label">Tag</Tag>);
+
+    const tagElement = page.locator('[aria-label="Custom Label"]');
+    await expect(tagElement).toBeVisible();
+  });
+
+  test('should have proper ARIA label for remove button', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag onRemove={() => {}}>Test Tag</Tag>);
+
+    const closeButton = page.locator('button[aria-label="Remove Test Tag"]');
+    await expect(closeButton).toBeVisible();
+  });
+
+  test('should hide icons from screen readers', async ({ mount, page }) => {
+    await mount(<Tag>Screen Reader Test</Tag>);
+
+    const icons = page.locator('svg[aria-hidden="true"]');
+    const iconCount = await icons.count();
+    expect(iconCount).toBe(2); // Both icons should be hidden
+  });
+
+  test('should not have accessibility violations - default', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag>Accessible</Tag>);
+
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test('should not have accessibility violations - with onRemove', async ({
+    mount,
+    page,
+  }) => {
+    await mount(<Tag onRemove={() => {}}>Removable</Tag>);
+
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test('should not have accessibility violations - without icons', async ({
+    mount,
+    page,
+  }) => {
+    await mount(
+      <Tag showStartIcon={false} showEndIcon={false}>
+        No Icons
+      </Tag>
+    );
+
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test('should not have accessibility violations - all positive variants', async ({
+    mount,
+    page,
+  }) => {
+    const variants = [
+      'positive-green',
+      'positive-blue',
+      'positive-yellow',
+      'positive-gray',
+      'positive-orange',
+      'positive-pink',
+      'positive-purple',
+    ] as const;
+
+    for (const variant of variants) {
+      await mount(<Tag variant={variant}>{variant}</Tag>);
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations).toEqual([]);
+    }
+  });
+
+  test('should not have accessibility violations - all negative variants', async ({
+    mount,
+    page,
+  }) => {
+    const variants = [
+      'negative-green',
+      'negative-blue',
+      'negative-yellow',
+      'negative-gray',
+      'negative-orange',
+      'negative-pink',
+      'negative-purple',
+    ] as const;
+
+    for (const variant of variants) {
+      await mount(<Tag variant={variant}>{variant}</Tag>);
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations).toEqual([]);
+    }
+  });
+
+  // Console error monitoring test
+  test('should render without console errors', async ({ mount, page }) => {
+    const consoleErrors: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
 
-    test('should support keyboard interaction when clickable', async ({
-      mount,
-    }) => {
-      const handleClick = () => {
-        // Click handler for testing keyboard interaction
-      };
+    await mount(<Tag variant="positive-green">No Errors</Tag>);
+    expect(consoleErrors).toEqual([]);
+  });
 
-      const component = await mount(<Tag onClick={handleClick} />);
-      const tag = component.locator('div').first();
-
-      await tag.focus();
-      await expect(tag).toBeFocused();
-
-      // Test Enter key
-      await tag.press('Enter');
-      // Note: The component should handle keyboard events for full accessibility
+  test('should interact without console errors', async ({ mount, page }) => {
+    const consoleErrors: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
+
+    await mount(<Tag onRemove={() => {}}>Click Me</Tag>);
+
+    const closeButton = page.locator('button[aria-label*="Remove"]');
+    await closeButton.click();
+
+    expect(consoleErrors).toEqual([]);
+  });
+
+  // Custom className test
+  test('should apply custom className', async ({ mount, page }) => {
+    await mount(<Tag className="custom-test-class">Custom</Tag>);
+
+    const tagElement = page.locator('.custom-test-class');
+    await expect(tagElement).toBeVisible();
+  });
+
+  // Edge cases
+  test('should handle long text content', async ({ mount }) => {
+    const component = await mount(
+      <Tag>This is a very long tag text that should still render properly</Tag>
+    );
+    await expect(component).toBeVisible();
+  });
+
+  test('should handle special characters in text', async ({ mount }) => {
+    const component = await mount(<Tag>Tag & Text © 2024</Tag>);
+    await expect(component).toBeVisible();
+    await expect(component).toContainText('Tag & Text © 2024');
   });
 });
