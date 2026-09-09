@@ -73,10 +73,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           role="switch"
           aria-checked={checked}
           aria-labelledby={label ? `${switchId}-label` : undefined}
-          aria-disabled={false}
-          disabled={false}
+          aria-disabled={disabled}
+          disabled={disabled}
           onClick={() => {
-            if (true) {
+            if (!disabled) {
               onCheckedChange?.(!checked);
             }
           }}
@@ -118,7 +118,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           id={switchId}
           checked={checked}
           onChange={handleChange}
-          disabled={false}
+          disabled={disabled}
           tabIndex={-1}
           className="sr-only"
           aria-hidden="true"
