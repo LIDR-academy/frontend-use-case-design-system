@@ -1,4 +1,5 @@
 import React, { forwardRef, useId } from 'react';
+import { switchSizeStyles } from './Switch.styles';
 
 export interface SwitchProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
@@ -45,26 +46,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       }
     };
 
-    // Size variants for the switch container and thumb
-    const sizeStyles = {
-      sm: {
-        container: 'h-5 w-9',
-        thumb: 'h-4 w-4',
-        translate: 'translate-x-4',
-      },
-      md: {
-        container: 'h-6 w-11',
-        thumb: 'h-5 w-5',
-        translate: 'translate-x-5',
-      },
-      lg: {
-        container: 'h-7 w-14',
-        thumb: 'h-6 w-6',
-        translate: 'translate-x-7',
-      },
-    };
-
-    const currentSize = sizeStyles[size];
+    const currentSize = switchSizeStyles[size];
 
     return (
       <div className={`inline-flex items-center gap-2 ${className}`}>
