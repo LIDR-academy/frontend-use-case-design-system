@@ -1,99 +1,164 @@
 import React from 'react';
 import { Icon } from '../../atoms/Icon/Icon';
 
+/**
+ * Tag component following Figma design system specifications.
+ * A molecule component that combines icons and text to display labels.
+ *
+ * @example
+ * ```tsx
+ * <Tag variant="positive-green" onRemove={() => console.log('removed')}>
+ *   Tag
+ * </Tag>
+ * ```
+ */
 export interface TagProps {
-  endIcon?: boolean;
-  startIcon?: boolean;
-  showText?: boolean;
-  text?: string;
-  color?: 'yellow' | 'gray' | 'blue' | 'green' | 'orange' | 'pink' | 'purple';
-  size?: 'l' | 'm' | 's';
-  type?: 'negative' | 'positive';
+  /** Visual style variant following Figma design tokens */
+  variant?:
+    | 'positive-green'
+    | 'positive-blue'
+    | 'positive-yellow'
+    | 'positive-gray'
+    | 'positive-orange'
+    | 'positive-pink'
+    | 'positive-purple'
+    | 'negative-green'
+    | 'negative-blue'
+    | 'negative-yellow'
+    | 'negative-gray'
+    | 'negative-orange'
+    | 'negative-pink'
+    | 'negative-purple';
+  /** Whether to show the start icon (arrow) */
+  showStartIcon?: boolean;
+  /** Whether to show the end icon (close/x) */
+  showEndIcon?: boolean;
+  /** Text content of the tag */
+  children: React.ReactNode;
+  /** Handler called when end icon (close) is clicked */
+  onRemove?: () => void;
+  /** Additional CSS classes */
   className?: string;
-  onClick?: () => void;
+  /** ARIA label for accessibility */
+  'aria-label'?: string;
 }
 
 export const Tag: React.FC<TagProps> = ({
-  endIcon = true,
-  startIcon = true,
-  showText = true,
-  text = 'Tag',
-  color = 'blue',
-  size = 'm',
-  type = 'positive',
+  variant = 'positive-green',
+  showStartIcon = true,
+  showEndIcon = true,
+  children,
+  onRemove,
   className = '',
-  onClick,
+  'aria-label': ariaLabel,
 }) => {
-  const sizeClasses = {
-    s: 'px-2 py-1 text-xs gap-1',
-    m: 'px-3 py-1.5 text-sm gap-2',
-    l: 'px-4 py-2 text-base gap-2',
+  // Figma design tokens mapped to Tailwind classes
+  const variantClasses = {
+    'positive-green': {
+      container: 'bg-[#dafaeb] text-[#075e45]',
+      icon: 'text-[#075e45]',
+    },
+    'positive-blue': {
+      container: 'bg-blue-100 text-blue-800',
+      icon: 'text-blue-800',
+    },
+    'positive-yellow': {
+      container: 'bg-yellow-100 text-yellow-800',
+      icon: 'text-yellow-800',
+    },
+    'positive-gray': {
+      container: 'bg-gray-100 text-gray-800',
+      icon: 'text-gray-800',
+    },
+    'positive-orange': {
+      container: 'bg-orange-100 text-orange-800',
+      icon: 'text-orange-800',
+    },
+    'positive-pink': {
+      container: 'bg-pink-100 text-pink-800',
+      icon: 'text-pink-800',
+    },
+    'positive-purple': {
+      container: 'bg-purple-100 text-purple-800',
+      icon: 'text-purple-800',
+    },
+    'negative-green': {
+      container: 'bg-green-800 text-green-100',
+      icon: 'text-green-100',
+    },
+    'negative-blue': {
+      container: 'bg-blue-800 text-blue-100',
+      icon: 'text-blue-100',
+    },
+    'negative-yellow': {
+      container: 'bg-yellow-800 text-yellow-100',
+      icon: 'text-yellow-100',
+    },
+    'negative-gray': {
+      container: 'bg-gray-800 text-gray-100',
+      icon: 'text-gray-100',
+    },
+    'negative-orange': {
+      container: 'bg-orange-800 text-orange-100',
+      icon: 'text-orange-100',
+    },
+    'negative-pink': {
+      container: 'bg-pink-800 text-pink-100',
+      icon: 'text-pink-100',
+    },
+    'negative-purple': {
+      container: 'bg-purple-800 text-purple-100',
+      icon: 'text-purple-100',
+    },
   };
 
-  const colorClasses = {
-    positive: {
-      yellow: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      gray: 'bg-gray-100 text-gray-800 border-gray-200',
-      blue: 'bg-blue-100 text-blue-800 border-blue-200',
-      green: 'bg-green-100 text-green-800 border-green-200',
-      orange: 'bg-orange-100 text-orange-800 border-orange-200',
-      pink: 'bg-pink-100 text-pink-800 border-pink-200',
-      purple: 'bg-purple-100 text-purple-800 border-purple-200',
-    },
-    negative: {
-      yellow: 'bg-yellow-800 text-yellow-100 border-yellow-700',
-      gray: 'bg-gray-800 text-gray-100 border-gray-700',
-      blue: 'bg-blue-800 text-blue-100 border-blue-700',
-      green: 'bg-green-800 text-green-100 border-green-700',
-      orange: 'bg-orange-800 text-orange-100 border-orange-700',
-      pink: 'bg-pink-800 text-pink-100 border-pink-700',
-      purple: 'bg-purple-800 text-purple-100 border-purple-700',
-    },
+  const { container, icon: iconColor } = variantClasses[variant];
+
+  const handleRemoveClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onRemove?.();
   };
 
-  const iconColorClasses = {
-    positive: {
-      yellow: 'text-yellow-800',
-      gray: 'text-gray-800',
-      blue: 'text-blue-800',
-      green: 'text-green-800',
-      orange: 'text-orange-800',
-      pink: 'text-pink-800',
-      purple: 'text-purple-800',
-    },
-    negative: {
-      yellow: 'text-yellow-100',
-      gray: 'text-gray-100',
-      blue: 'text-blue-100',
-      green: 'text-green-100',
-      orange: 'text-orange-100',
-      pink: 'text-pink-100',
-      purple: 'text-purple-100',
-    },
+  const handleRemoveKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      event.stopPropagation();
+      onRemove?.();
+    }
   };
 
-  const iconSize = size === 's' ? 'xs' : size === 'm' ? 'sm' : 'md';
-
+  // Build class string
   const baseClasses =
-    'inline-flex items-center border rounded-full font-medium';
-  const appliedColorClasses = colorClasses[type][color];
-  const appliedSizeClasses = sizeClasses[size];
-  const iconColorClass = iconColorClasses[type][color];
+    'inline-flex items-center justify-center px-2 py-1.5 gap-1 rounded font-["Montserrat"] font-medium text-xs leading-3';
+  const allClasses = `${baseClasses} ${container} ${className}`;
 
   return (
-    <div
-      className={`${baseClasses} ${appliedColorClasses} ${appliedSizeClasses} ${className}`}
-      onClick={onClick}
-      role={onClick ? 'button' : undefined}
-      tabIndex={onClick ? 0 : undefined}
-    >
-      {startIcon && (
-        <Icon name="arrow-left" size={iconSize} className={iconColorClass} />
+    <div className={allClasses} aria-label={ariaLabel || `Tag: ${children}`}>
+      {showStartIcon && (
+        <Icon
+          name="arrow-left"
+          size="xs"
+          className={`w-3 h-3 ${iconColor}`}
+          aria-hidden="true"
+        />
       )}
 
-      {showText && <span>{text}</span>}
+      <span className="text-center">{children}</span>
 
-      {endIcon && <Icon name="x" size={iconSize} className={iconColorClass} />}
+      {showEndIcon && (
+        <button
+          type="button"
+          onClick={handleRemoveClick}
+          onKeyDown={handleRemoveKeyDown}
+          className={`inline-flex items-center justify-center w-3 h-3 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-current rounded-sm transition-opacity hover:opacity-70 ${iconColor}`}
+          aria-label={`Remove ${children}`}
+          tabIndex={0}
+        >
+          <Icon name="x" size="xs" className="w-3 h-3" aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 };
+
+Tag.displayName = 'Tag';
