@@ -67,7 +67,8 @@
     "prepublishOnly": "npm run build:lib && npm run build-storybook",
     "release": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish"
+    "release:major": "npm version major && npm publish",
+    "test:session": "playwright test -c playwright-ct.config.ts src/components/atoms/Switch/Switch.session.spec.tsx --project=chromium --workers=1"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -95,6 +96,7 @@
     "@storybook/react": "^7.6.20",
     "@storybook/react-vite": "^7.6.20",
     "@storybook/testing-library": "^0.2.1",
+    "@storybook/theming": "7.6.20",
     "@types/react": "^18.3.24",
     "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
